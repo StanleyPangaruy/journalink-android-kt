@@ -16,43 +16,44 @@
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="86dp"
+            android:layout_marginTop="46dp"
             app:srcCompat="@drawable/journalinkname_txt" />
 
         <androidx.cardview.widget.CardView
-            android:layout_width="240dp"
-            android:layout_height="277dp"
+            android:layout_width="230dp"
+            android:layout_height="215dp"
             android:layout_gravity="center"
-            app:cardCornerRadius="50dp">
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/journalink_app_logo"
-                android:scaleType="centerCrop" />
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/journalink_app_logo" />
 
         </androidx.cardview.widget.CardView>
 
         <FrameLayout
             android:id="@+id/usernameEditTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
             android:background="@drawable/rounded_frame_layout"
-            android:layout_marginTop="216dp"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:layout_margin="8dp">
+            android:paddingEnd="12dp">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="start|center_vertical"
-                app:srcCompat="@drawable/username_icon"
-                android:padding="4dp" />
+                android:padding="4dp"
+                app:srcCompat="@drawable/username_icon" />
 
             <EditText
                 android:id="@+id/usernameEditText"
+                style="@style/CustomEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
@@ -60,10 +61,9 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:hint="Username / Email"
-                android:textColor="#000000"
                 android:background="@null"
-                style="@style/CustomEditTextStyle" />
+                android:hint="Username / Email"
+                android:textColor="#000000" />
 
         </FrameLayout>
 
@@ -71,21 +71,22 @@
         <FrameLayout
             android:id="@+id/passwordEditTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:layout_margin="8dp">
+            android:paddingEnd="12dp">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="start|center_vertical"
-                app:srcCompat="@drawable/password_icon"
-                android:padding="4dp" />
+                android:padding="4dp"
+                app:srcCompat="@drawable/password_icon" />
 
             <EditText
                 android:id="@+id/passwordEditText"
+                style="@style/CustomEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
@@ -93,19 +94,50 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:hint="Password"
-                android:textColor="#000000"
                 android:background="@null"
-                style="@style/CustomEditTextStyle" />
+                android:hint="Password"
+                android:textColor="#000000" />
 
         </FrameLayout>
 
-        <Button
+        <ImageButton
             android:id="@+id/loginButton"
+            android:layout_width="361dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:src="@drawable/login_btn" />
+
+
+        <TextView
+            android:id="@+id/forgotPasswordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Log In" />
+            android:text="Forgot Password?"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/dontHaveAccountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Don't have an account?"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:src="@drawable/sign_up_btn" />
+
 
     </LinearLayout>
 
