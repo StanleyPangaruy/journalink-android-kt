@@ -6,15 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="JournaLink"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,24 +13,92 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="205dp"
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="86dp"
+            app:srcCompat="@drawable/journalinkname_txt" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="240dp"
             android:layout_height="277dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/journalink_app_logo" />
+            app:cardCornerRadius="50dp">
 
-        <EditText
-            android:id="@+id/usernameEditText"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/journalink_app_logo"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:id="@+id/usernameEditTextContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username" />
+            android:background="@drawable/rounded_frame_layout"
+            android:layout_marginTop="216dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_margin="8dp">
 
-        <EditText
-            android:id="@+id/passwordEditText"
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="start|center_vertical"
+                app:srcCompat="@drawable/username_icon"
+                android:padding="4dp" />
+
+            <EditText
+                android:id="@+id/usernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Username / Email"
+                android:textColor="#000000"
+                android:background="@null"
+                style="@style/CustomEditTextStyle" />
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/passwordEditTextContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            android:background="@drawable/rounded_frame_layout"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:layout_margin="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="start|center_vertical"
+                app:srcCompat="@drawable/password_icon"
+                android:padding="4dp" />
+
+            <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Password"
+                android:textColor="#000000"
+                android:background="@null"
+                style="@style/CustomEditTextStyle" />
+
+        </FrameLayout>
 
         <Button
             android:id="@+id/loginButton"
