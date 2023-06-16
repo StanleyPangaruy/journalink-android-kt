@@ -110,6 +110,37 @@
 
                 </FrameLayout>
 
+                <FrameLayout
+                    android:id="@+id/emailEditTextContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_frame_layout"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/email_icon" />
+
+                    <EditText
+                        android:id="@+id/emailEditText"
+                        style="@style/CustomEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:hint="Email"
+                        android:textColor="#000000" />
+
+                </FrameLayout>
 
                 <FrameLayout
                     android:id="@+id/passwordEditTextContainer"
@@ -139,6 +170,38 @@
                         android:layout_marginBottom="8dp"
                         android:background="@null"
                         android:hint="Password"
+                        android:textColor="#000000" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/confirmPasswordEditTextContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_frame_layout"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/password_icon" />
+
+                    <EditText
+                        android:id="@+id/confirmPasswordEditText"
+                        style="@style/CustomEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:hint="Confirm Password"
                         android:textColor="#000000" />
 
                 </FrameLayout>
