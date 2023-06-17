@@ -17,10 +17,10 @@
     <View
         android:id="@+id/leftCircle2"
         android:layout_width="155dp"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         android:background="@drawable/circle_lower_left2"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="585dp" />
+        android:layout_marginTop="635dp" />
 
     <!-- Background circles on the right side -->
     <View
@@ -29,7 +29,7 @@
         android:layout_height="190dp"
         android:background="@drawable/circle_upper_right2"
         android:layout_marginStart="333dp"
-        android:layout_marginTop="90dp" />
+        android:layout_marginTop="110dp" />
 
     <View
         android:id="@+id/rightCircle2"
@@ -37,7 +37,7 @@
         android:layout_height="190dp"
         android:background="@drawable/circle_lower_right2"
         android:layout_marginStart="333dp"
-        android:layout_marginTop="480dp" />
+        android:layout_marginTop="520dp" />
 
     <!-- returning arrow -->
     <View
@@ -63,20 +63,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="135dp"
-                    android:layout_height="151dp"
+                <ImageView
+                    android:id="@+id/appLogo"
+                    android:layout_width="210dp"
+                    android:layout_height="205dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15dp">
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="135dp"
-                        android:layout_height="151dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/journalink_app_logo" />
-
-                </androidx.cardview.widget.CardView>
+                    android:layout_marginTop="25dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/journalink_app_logo" />
 
                 <ImageView
                     android:id="@+id/signUp"
@@ -91,7 +85,10 @@
                     android:id="@+id/usernameEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/rounded_frame_layout"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp">
@@ -123,7 +120,10 @@
                     android:id="@+id/emailEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/rounded_frame_layout"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp">
@@ -155,7 +155,10 @@
                     android:id="@+id/passwordEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/rounded_frame_layout"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp">
@@ -187,7 +190,10 @@
                     android:id="@+id/confirmPasswordEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@drawable/rounded_frame_layout"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp">
@@ -217,12 +223,8 @@
 
                 <ImageButton
                     android:id="@+id/registerButton"
-                    android:layout_width="361dp"
-                    android:layout_height="65dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:background="@null"
-                    android:src="@drawable/register_btn" />
+                    style="@style/RegisterButton"
+                    android:src="@null" />
 
             </LinearLayout>
 
