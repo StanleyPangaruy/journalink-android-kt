@@ -11,10 +11,21 @@
         <item name="android:fontFamily">@font/poppins_regular1</item>
     </style>
 
-    <style name="button">
+
+    <style name="LoginButton" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">361dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:background">@drawable/login_btn</item>
+    </style>
+
+    <style name="SignUpButton" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/sign_up_btn</item>
     </style>
+
 </resources>
 

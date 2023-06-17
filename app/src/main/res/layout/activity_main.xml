@@ -138,12 +138,8 @@
 
                 <ImageButton
                     android:id="@+id/loginButton"
-                    android:layout_width="361dp"
-                    android:layout_height="65dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:background="@null"
-                    android:src="@drawable/login_btn" />
+                    style="@style/LoginButton"
+                    android:src="@null" />
 
 
                 <TextView
@@ -170,11 +166,8 @@
 
                 <ImageButton
                     android:id="@+id/signUpButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@null"
-                    android:src="@drawable/sign_up_btn" />
+                    style="@style/SignUpButton"
+                    android:src="@null" />
 
             </LinearLayout>
 
