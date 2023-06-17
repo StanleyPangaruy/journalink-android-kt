@@ -94,8 +94,8 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
                         app:srcCompat="@drawable/username_icon" />
@@ -129,8 +129,8 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
                         app:srcCompat="@drawable/email_icon" />
@@ -164,8 +164,8 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
                         app:srcCompat="@drawable/password_icon" />
@@ -199,8 +199,8 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
                         app:srcCompat="@drawable/password_icon" />

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background circles on the left side -->
+    <View
+        android:id="@+id/leftCircle1"
+        android:layout_width="50dp"
+        android:layout_height="190dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/circle_upper_left2" />
+
+    <View
+        android:id="@+id/leftCircle2"
+        android:layout_width="50dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_upper_left2"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="590dp" />
+
+    <!-- Background circles on the right side -->
+    <View
+        android:id="@+id/rightCircle1"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@drawable/circle_bg"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="90dp" />
+
+    <View
+        android:id="@+id/rightCircle2"
+        android:layout_width="183dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="593dp"
+        android:background="@drawable/circle_bg" />
+
+    <!-- returning arrow -->
+    <View
+        android:id="@+id/arrow"
+        android:layout_width="26dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/return_btn" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/forgotPWCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    app:srcCompat="@drawable/code_has_been_sent_" />
+
+                <TextView
+                    android:id="@+id/codeDescripText"
+                    style="@style/CustomEditTextStyle"
+                    android:layout_width="292dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="For your security, a verification code has been sent to your email to reset your password."
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/emailSentIcon"
+                    android:layout_width="230dp"
+                    android:layout_height="235dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/email_sent_icon" />
+
+                <FrameLayout
+                    android:id="@+id/usernameEditTextContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_frame_layout"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/code_icon" />
+
+                    <EditText
+                        android:id="@+id/codeEditText"
+                        style="@style/CustomEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:hint="Enter the 4 Digit Code"
+                        android:textColor="@color/black" />
+
+                </FrameLayout>
+
+                <ImageButton
+                    android:id="@+id/verifyButton"
+                    style="@style/VerifyButton"
+                    android:src="@null" />
+
+                <TextView
+                    android:id="@+id/didntReceiveTheCodeText"
+                    style="@style/CustomEditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="Didn't receive the code?"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/resendText"
+                    style="@style/CustomEditTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:text="R e s e n d"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    android:textStyle="bold"SSSSSSSS
+                    android:shadowColor="@color/black"
+                    android:shadowDx="7"
+                    android:shadowDy="10"
+                    android:shadowRadius="20"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
