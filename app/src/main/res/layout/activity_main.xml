@@ -16,11 +16,11 @@
 
     <View
         android:id="@+id/leftCircle2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/circle_lower_left"
+        android:layout_width="104dp"
+        android:layout_height="172dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="615dp" />
+        android:layout_marginTop="615dp"
+        android:background="@drawable/circle_lower_left" />
 
     <!-- Background circles on the right side -->
     <View
@@ -34,10 +34,10 @@
     <View
         android:id="@+id/rightCircle2"
         android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:background="@drawable/circle_lower_right"
+        android:layout_height="205dp"
         android:layout_marginStart="253dp"
-        android:layout_marginTop="573dp" />
+        android:layout_marginTop="580dp"
+        android:background="@drawable/circle_lower_right" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -81,8 +81,8 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
                         app:srcCompat="@drawable/username_icon" />
@@ -114,8 +114,8 @@
                     android:paddingEnd="12dp">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
                         app:srcCompat="@drawable/password_icon" />
@@ -147,6 +147,7 @@
 
 
                 <TextView
+                    style="@style/CustomEditTextStyle"
                     android:id="@+id/forgotPasswordText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -157,10 +158,11 @@
 
                 <TextView
                     android:id="@+id/dontHaveAccountText"
+                    style="@style/CustomEditTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="30dp"
                     android:text="Don't have an account?"
                     android:textColor="@color/black"
                     android:textSize="14sp"
