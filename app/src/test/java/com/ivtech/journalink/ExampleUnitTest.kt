@@ -1,4 +1,4 @@
-package com.example.journalink
+package com.ivtech.journalink
 
 import org.junit.Test
 

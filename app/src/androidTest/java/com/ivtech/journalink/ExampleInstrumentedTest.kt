@@ -1,4 +1,4 @@
-package com.example.journalink
+package com.ivtech.journalink
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
