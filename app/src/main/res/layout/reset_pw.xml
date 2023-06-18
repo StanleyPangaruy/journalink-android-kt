@@ -39,15 +39,6 @@
         android:layout_marginTop="593dp"
         android:background="@drawable/circle_bg" />
 
-    <!-- returning arrow -->
-    <View
-        android:id="@+id/arrow"
-        android:layout_width="26dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/return_btn" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -64,14 +55,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/forgotPWCode"
+                    android:id="@+id/resetPWCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
-                    app:srcCompat="@drawable/code_has_been_sent_" />
+                    app:srcCompat="@drawable/reset_password" />
 
                 <TextView
-                    android:id="@+id/codeDescripText"
+                    android:id="@+id/resetPWDescripText"
                     style="@style/CustomEditTextStyle"
                     android:layout_width="292dp"
                     android:layout_height="70dp"
@@ -80,23 +71,23 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="For your security, a verification code has been sent to your email to reset your password."
+                    android:text="Password must be above 8 characters long and a combination of uppercase letters, lowercase letters, numbers, and symbols."
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
                 <ImageView
-                    android:id="@+id/emailSentIcon"
+                    android:id="@+id/LockIcon"
                     android:layout_width="230dp"
                     android:layout_height="235dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="15dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/email_sent_icon" />
+                    android:src="@drawable/lock_icon" />
 
                 <FrameLayout
-                    android:id="@+id/usernameEditTextContainer"
+                    android:id="@+id/newPWEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_margin="8dp"
@@ -109,10 +100,10 @@
                         android:layout_height="29dp"
                         android:layout_gravity="start|center_vertical"
                         android:padding="4dp"
-                        app:srcCompat="@drawable/code_icon" />
+                        app:srcCompat="@drawable/key_icon" />
 
                     <EditText
-                        android:id="@+id/codeEditText"
+                        android:id="@+id/newPWEditText"
                         style="@style/CustomEditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -122,42 +113,47 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:background="@null"
-                        android:hint="Enter the 4 Digit Code"
+                        android:hint="New Password"
+                        android:textColor="@color/black" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/confirmPWTextContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rounded_frame_layout"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="29dp"
+                        android:layout_height="29dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:padding="4dp"
+                        app:srcCompat="@drawable/key_icon" />
+
+                    <EditText
+                        android:id="@+id/confirmPWEditText"
+                        style="@style/CustomEditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:hint="Confirm Password"
                         android:textColor="@color/black" />
 
                 </FrameLayout>
 
                 <ImageButton
-                    android:id="@+id/verifyButton"
-                    style="@style/VerifyButton"
+                    android:id="@+id/confirmButton"
+                    style="@style/ConfirmButton"
                     android:src="@null" />
-
-                <TextView
-                    android:id="@+id/didntReceiveTheCodeText"
-                    style="@style/CustomEditTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="D i d n ' t  r e c e i v e  t h e  c o d e ?"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:id="@+id/resendText"
-                    style="@style/CustomEditTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:text="R e s e n d"
-                    android:textColor="@color/blue"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:shadowColor="@color/black"
-                    android:shadowDx="7"
-                    android:shadowDy="10"
-                    android:shadowRadius="35"/>
 
             </LinearLayout>
 
