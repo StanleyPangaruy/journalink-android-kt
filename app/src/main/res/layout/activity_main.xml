@@ -164,10 +164,14 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/signUpButton"
                     style="@style/SignUpButton"
-                    android:src="@null" />
+                    android:text="Sign Up"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 
