@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.JournaLink" parent="Base.Theme.JournaLink" />
+    <style name="SwitchCompatTheme">
+        <item name="colorControlActivated">@color/white </item>
+    </style>
 </resources>
