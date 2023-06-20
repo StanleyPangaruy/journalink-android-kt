@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "603178735064",
+    "project_id": "journalink-82dfb",
+    "storage_bucket": "journalink-82dfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603178735064:android:890bcbb59242669b608ead",
+        "android_client_info": {
+          "package_name": "com.example.journalink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603178735064-12jvjv7firjl1q74ekklf1tbrtm2u2hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-N7XCghXeB5_EoKYphw6_yvDCS03vJx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603178735064-12jvjv7firjl1q74ekklf1tbrtm2u2hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
