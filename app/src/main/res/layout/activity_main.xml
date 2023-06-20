@@ -143,14 +143,15 @@
 
 
                 <TextView
-                    style="@style/CustomEditTextStyle"
                     android:id="@+id/forgotPasswordText"
+                    style="@style/CustomEditTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Forgot Password?"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textColor="@color/blue"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/dontHaveAccountText"

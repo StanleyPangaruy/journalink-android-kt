@@ -16,5 +16,11 @@ class ForgotPassword : AppCompatActivity() {
             val intent = Intent (this, ResetPassword:: class.java)
             startActivity(intent)
         }
+
+        val arrowBtn = findViewById<ImageButton>(R.id.arrow)
+        arrowBtn.setOnClickListener {
+            val intent = Intent (this, MainActivity:: class.java)
+            startActivity(intent)
+        }
     }
 }

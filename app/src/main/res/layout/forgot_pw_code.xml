@@ -40,13 +40,13 @@
         android:background="@drawable/circle_bg" />
 
     <!-- returning arrow -->
-    <View
-        android:id="@+id/arrow"
-        android:layout_width="26dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/return_btn" />
+<!--    <View-->
+<!--        android:id="@+id/arrow"-->
+<!--        android:layout_width="26dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginTop="35dp"-->
+<!--        android:background="@drawable/return_btn" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -58,6 +58,15 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- returning arrow -->
+            <ImageButton
+                android:id="@+id/arrow"
+                android:layout_width="26dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/return_btn" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,7 +76,7 @@
                     android:id="@+id/forgotPWCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="0dp"
                     app:srcCompat="@drawable/code_has_been_sent_" />
 
                 <TextView

@@ -40,13 +40,13 @@
         android:layout_marginTop="520dp" />
 
     <!-- returning arrow -->
-    <View
-        android:id="@+id/arrow"
-        android:layout_width="26dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/return_btn" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/arrow"-->
+<!--        android:layout_width="26dp"-->
+<!--        android:layout_height="27dp"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginTop="35dp"-->
+<!--        android:background="@drawable/return_btn" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -63,12 +63,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <!-- returning arrow -->
+                <ImageButton
+                    android:id="@+id/arrow"
+                    android:layout_width="26dp"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/return_btn" />
+
                 <ImageView
                     android:id="@+id/appLogo"
                     android:layout_width="210dp"
                     android:layout_height="205dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/journalink_app_logo" />
 
@@ -80,12 +88,11 @@
                     android:layout_marginBottom="15dp"
                     app:srcCompat="@drawable/sign_up_txt" />
 
-
                 <FrameLayout
                     android:id="@+id/usernameEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
@@ -120,7 +127,7 @@
                     android:id="@+id/emailEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
@@ -155,7 +162,7 @@
                     android:id="@+id/passwordEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
@@ -190,7 +197,7 @@
                     android:id="@+id/confirmPasswordEditTextContainer"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
