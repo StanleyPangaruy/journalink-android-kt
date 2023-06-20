@@ -28,7 +28,7 @@
         android:layout_width="60dp"
         android:layout_height="190dp"
         android:background="@drawable/circle_upper_right2"
-        android:layout_marginStart="333dp"
+        android:layout_marginStart="353dp"
         android:layout_marginTop="110dp" />
 
     <View
@@ -36,17 +36,8 @@
         android:layout_width="60dp"
         android:layout_height="190dp"
         android:background="@drawable/circle_lower_right2"
-        android:layout_marginStart="333dp"
+        android:layout_marginStart="353dp"
         android:layout_marginTop="520dp" />
-
-    <!-- returning arrow -->
-<!--    <ImageButton-->
-<!--        android:id="@+id/arrow"-->
-<!--        android:layout_width="26dp"-->
-<!--        android:layout_height="27dp"-->
-<!--        android:layout_marginStart="25dp"-->
-<!--        android:layout_marginTop="35dp"-->
-<!--        android:background="@drawable/return_btn" />-->
 
     <ScrollView
         android:layout_width="match_parent"

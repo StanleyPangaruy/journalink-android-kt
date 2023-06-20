@@ -58,7 +58,7 @@
                     android:id="@+id/resetPWCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="45dp"
                     app:srcCompat="@drawable/reset_password" />
 
                 <TextView
@@ -68,9 +68,9 @@
                     android:layout_height="70dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
                     android:text="Password must be above 8 characters long and a combination of uppercase letters, lowercase letters, numbers, and symbols."
                     android:textAlignment="center"
                     android:textColor="@color/black"
@@ -82,7 +82,7 @@
                     android:layout_height="235dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="1dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="5dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/lock_icon" />
 

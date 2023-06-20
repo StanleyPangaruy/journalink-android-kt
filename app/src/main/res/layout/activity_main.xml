@@ -28,14 +28,14 @@
         android:layout_width="60dp"
         android:layout_height="190dp"
         android:background="@drawable/circle_upper_right"
-        android:layout_marginStart="333dp"
+        android:layout_marginStart="353dp"
         android:layout_marginTop="190dp" />
 
     <View
         android:id="@+id/rightCircle2"
         android:layout_width="140dp"
         android:layout_height="205dp"
-        android:layout_marginStart="253dp"
+        android:layout_marginStart="273dp"
         android:layout_marginTop="580dp"
         android:background="@drawable/circle_lower_right" />
 
@@ -165,14 +165,10 @@
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/signUpButton"
                     style="@style/SignUpButton"
-                    android:text="Sign Up"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:textAllCaps="false" />
+                    android:src="@null" />
 
             </LinearLayout>
 

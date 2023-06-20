@@ -47,7 +47,7 @@
         <item name="android:layout_width">361dp</item>
         <item name="android:layout_height">65dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">5dp</item>
         <item name="android:background">@drawable/verify_btn</item>
     </style>
 
@@ -55,7 +55,7 @@
         <item name="android:layout_width">361dp</item>
         <item name="android:layout_height">65dp</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
         <item name="android:background">@drawable/confirm_btn</item>
     </style>
 
