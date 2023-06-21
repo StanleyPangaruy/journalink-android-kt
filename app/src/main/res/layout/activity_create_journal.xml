@@ -72,30 +72,23 @@
         app:srcCompat="@null" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/createJournaltxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.394"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025"
+        app:layout_constraintVertical_bias="0.024"
         app:srcCompat="@drawable/create_journal_txt" />
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/JournalTitlebg"
+        android:layout_width="283dp"
+        android:layout_height="44dp"
         android:background="@drawable/textbox_for_journal_title"
-        android:ems="10"
-        android:hint="Journal Title"
-        android:inputType="text"
         android:textAlignment="center"
-        android:textColor="#00008F"
-        android:textColorHint="#A600008F"
-        android:textIsSelectable="false"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,9 +108,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.27" />
 
+    <EditText
+        android:id="@+id/shortDescriptiontxt"
+        android:layout_width="237dp"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Short Description of the Journal"
+        android:inputType="textMultiLine"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#00008F"
+        android:textColorHint="#A600008F"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.279" />
+
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="274dp"
+        android:id="@+id/bg_bluefortextbox"
+        android:layout_width="318dp"
         android:layout_height="403dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +141,7 @@
         app:srcCompat="@drawable/text_area_for_journal" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/savebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/save_btn"
@@ -140,9 +154,9 @@
         app:srcCompat="@null" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine3"
-        android:layout_width="233dp"
-        android:layout_height="328dp"
+        android:id="@+id/journalInputuser"
+        android:layout_width="241dp"
+        android:layout_height="343dp"
         android:background="@color/darkblue"
         android:ems="10"
         android:gravity="start|top"
@@ -160,24 +174,23 @@
         app:layout_constraintVertical_bias="0.771" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine4"
-        android:layout_width="237dp"
-        android:layout_height="59dp"
+        android:id="@+id/journaltitleInput"
+        android:layout_width="242dp"
+        android:layout_height="24dp"
         android:background="@color/white"
         android:ems="10"
-        android:gravity="start|top"
-        android:hint="Short Description of the Journal"
-        android:inputType="textMultiLine"
+        android:hint="Journal Title"
+        android:inputType="text"
         android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#00008F"
         android:textColorHint="#A600008F"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintVertical_bias="0.184" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
