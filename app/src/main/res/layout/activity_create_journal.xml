@@ -129,17 +129,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.279" />
 
-    <ImageView
-        android:id="@+id/bg_bluefortextbox"
-        android:layout_width="318dp"
-        android:layout_height="403dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833"
-        app:srcCompat="@drawable/text_area_for_journal" />
-
     <ImageButton
         android:id="@+id/savebtn"
         android:layout_width="wrap_content"
@@ -155,23 +144,24 @@
 
     <EditText
         android:id="@+id/journalInputuser"
-        android:layout_width="241dp"
-        android:layout_height="343dp"
+        android:layout_width="288dp"
+        android:layout_height="384dp"
         android:background="@color/darkblue"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Tell your stories here."
+        android:hint="   Start telling your stories here."
         android:inputType="textMultiLine"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#FFFFFF"
         android:textColorHint="#A3FFFFFF"
-        android:textSize="18sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintVertical_bias="0.794" />
 
     <EditText
         android:id="@+id/journaltitleInput"
