@@ -91,7 +91,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.642"
-        app:srcCompat="@drawable/email_icon" />
+        app:srcCompat="@drawable/email_icon1" />
 
     <ImageView
         android:id="@+id/phoneIcon"
