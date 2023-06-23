@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -12,7 +12,9 @@
         android:layout_height="190dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/circle_upperleft" />
+        android:background="@drawable/circle_upperleft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/leftCircle2"
@@ -20,7 +22,9 @@
         android:layout_height="172dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="615dp"
-        android:background="@drawable/circle_lower_left" />
+        android:background="@drawable/circle_lower_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Background circles on the right side -->
     <View
@@ -28,152 +32,157 @@
         android:layout_width="60dp"
         android:layout_height="190dp"
         android:background="@drawable/circle_upper_right"
-        android:layout_marginStart="353dp"
-        android:layout_marginTop="190dp" />
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="190dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/rightCircle2"
         android:layout_width="140dp"
         android:layout_height="205dp"
-        android:layout_marginStart="273dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginTop="580dp"
-        android:background="@drawable/circle_lower_right" />
+        android:background="@drawable/circle_lower_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/appName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            app:srcCompat="@drawable/journalinkname_txt" />
 
-            <LinearLayout
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="230dp"
+            android:layout_height="215dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/journalink_app_logo" />
+
+        <FrameLayout
+            android:id="@+id/usernameEditTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_frame_layout"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/appLogo">
+
+            <ImageView
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_gravity="start|center_vertical"
+                android:padding="4dp"
+                app:srcCompat="@drawable/username_icon" />
+
+            <EditText
+                android:id="@+id/usernameEditText"
+                style="@style/CustomEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:hint="Username / Email"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/usernameIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-                <ImageView
-                    android:id="@+id/appName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="56dp"
-                    app:srcCompat="@drawable/journalinkname_txt" />
-
-                <ImageView
-                    android:id="@+id/appLogo"
-                    android:layout_width="230dp"
-                    android:layout_height="215dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/journalink_app_logo" />
-
-                <FrameLayout
-                    android:id="@+id/usernameEditTextContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/rounded_frame_layout"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:layout_width="29dp"
-                        android:layout_height="29dp"
-                        android:layout_gravity="start|center_vertical"
-                        android:padding="4dp"
-                        app:srcCompat="@drawable/username_icon" />
-
-                    <EditText
-                        android:id="@+id/usernameEditText"
-                        style="@style/CustomEditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|center_vertical"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@null"
-                        android:hint="Username / Email"
-                        android:textColor="@color/black" />
-
-                </FrameLayout>
+        </FrameLayout>
 
 
-                <FrameLayout
-                    android:id="@+id/passwordEditTextContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/rounded_frame_layout"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
+        <FrameLayout
+            android:id="@+id/passwordEditTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/rounded_frame_layout"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/usernameEditTextContainer">
 
-                    <ImageView
-                        android:layout_width="29dp"
-                        android:layout_height="29dp"
-                        android:layout_gravity="start|center_vertical"
-                        android:padding="4dp"
-                        app:srcCompat="@drawable/password_icon" />
+            <ImageView
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_gravity="start|center_vertical"
+                android:padding="4dp"
+                app:srcCompat="@drawable/password_icon" />
 
-                    <EditText
-                        android:id="@+id/passwordEditText"
-                        style="@style/CustomEditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|center_vertical"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@null"
-                        android:hint="Password"
-                        android:textColor="@color/black" />
+            <EditText
+                android:id="@+id/passwordEditText"
+                style="@style/CustomEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:hint="Password"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/passwordIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-                </FrameLayout>
+        </FrameLayout>
 
-                <ImageButton
-                    android:id="@+id/loginButton"
-                    style="@style/LoginButton"
-                    android:src="@null" />
+        <ImageButton
+            android:id="@+id/loginButton"
+            style="@style/LoginButton"
+            android:src="@null"
+            app:layout_constraintTop_toBottomOf="@id/passwordEditTextContainer" />
 
 
-                <TextView
-                    android:id="@+id/forgotPasswordText"
-                    style="@style/CustomEditTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Forgot Password?"
-                    android:textColor="@color/blue"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/forgotPasswordText"
+            style="@style/CustomEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Forgot Password?"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/loginButton" />
 
-                <TextView
-                    android:id="@+id/dontHaveAccountText"
-                    style="@style/CustomEditTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:text="Don't have an account?"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+        <TextView
+            android:id="@+id/dontHaveAccountText"
+            style="@style/CustomEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Don't have an account?"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/forgotPasswordText" />
 
-                <ImageButton
-                    android:id="@+id/signUpButton"
-                    style="@style/SignUpButton"
-                    android:src="@null" />
+        <ImageButton
+            android:id="@+id/signUpButton"
+            style="@style/SignUpButton"
+            android:src="@null"
+            app:layout_constraintTop_toBottomOf="@id/dontHaveAccountText" />
 
-            </LinearLayout>
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

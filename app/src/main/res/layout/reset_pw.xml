@@ -39,126 +39,132 @@
         android:layout_marginTop="630dp"
         android:background="@drawable/circle_bg" />
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/resetPWCode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            app:srcCompat="@drawable/reset_password"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <LinearLayout
+        <TextView
+            android:id="@+id/resetPWDescripText"
+            style="@style/CustomEditTextStyle"
+            android:layout_width="292dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Password must be above 8 characters long and a combination of uppercase letters, lowercase letters, numbers, and symbols."
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/resetPWCode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/LockIcon"
+            android:layout_width="230dp"
+            android:layout_height="235dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/lock_icon"
+            app:layout_constraintTop_toBottomOf="@+id/resetPWDescripText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/newPWEditTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
+            android:layout_marginBottom="15dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@drawable/rounded_frame_layout"
+            app:layout_constraintBottom_toTopOf="@+id/confirmPWTextContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/LockIcon">
+
+            <ImageView
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_gravity="start|center_vertical"
+                android:padding="4dp"
+                app:srcCompat="@drawable/key_icon" />
+
+            <EditText
+                android:id="@+id/newPWEditText"
+                style="@style/CustomEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:hint="New Password"
+                android:textColor="@color/black" />
 
-                <ImageView
-                    android:id="@+id/resetPWCode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="45dp"
-                    app:srcCompat="@drawable/reset_password" />
+        </FrameLayout>
 
-                <TextView
-                    android:id="@+id/resetPWDescripText"
-                    style="@style/CustomEditTextStyle"
-                    android:layout_width="292dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:text="Password must be above 8 characters long and a combination of uppercase letters, lowercase letters, numbers, and symbols."
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+        <FrameLayout
+            android:id="@+id/confirmPWTextContainer"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@drawable/rounded_frame_layout"
+            app:layout_constraintBottom_toTopOf="@+id/confirmButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newPWEditTextContainer">
 
-                <ImageView
-                    android:id="@+id/LockIcon"
-                    android:layout_width="230dp"
-                    android:layout_height="235dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="5dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/lock_icon" />
+            <ImageView
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_gravity="start|center_vertical"
+                android:padding="4dp"
+                app:srcCompat="@drawable/key_icon" />
 
-                <FrameLayout
-                    android:id="@+id/newPWEditTextContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/rounded_frame_layout"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
+            <EditText
+                android:id="@+id/confirmPWEditText"
+                style="@style/CustomEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:hint="Confirm Password"
+                android:textColor="@color/black" />
 
-                    <ImageView
-                        android:layout_width="29dp"
-                        android:layout_height="29dp"
-                        android:layout_gravity="start|center_vertical"
-                        android:padding="4dp"
-                        app:srcCompat="@drawable/key_icon" />
+        </FrameLayout>
 
-                    <EditText
-                        android:id="@+id/newPWEditText"
-                        style="@style/CustomEditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|center_vertical"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@null"
-                        android:hint="New Password"
-                        android:textColor="@color/black" />
+        <ImageButton
+            android:id="@+id/confirmButton"
+            style="@style/ConfirmButton"
+            android:src="@null"
+            app:layout_constraintTop_toBottomOf="@+id/confirmPWTextContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-                </FrameLayout>
-
-                <FrameLayout
-                    android:id="@+id/confirmPWTextContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="46dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/rounded_frame_layout"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:layout_width="29dp"
-                        android:layout_height="29dp"
-                        android:layout_gravity="start|center_vertical"
-                        android:padding="4dp"
-                        app:srcCompat="@drawable/key_icon" />
-
-                    <EditText
-                        android:id="@+id/confirmPWEditText"
-                        style="@style/CustomEditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|center_vertical"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@null"
-                        android:hint="Confirm Password"
-                        android:textColor="@color/black" />
-
-                </FrameLayout>
-
-                <ImageButton
-                    android:id="@+id/confirmButton"
-                    style="@style/ConfirmButton"
-                    android:src="@null" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
