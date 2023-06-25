@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -87,20 +88,19 @@
         <TextView
             android:id="@+id/appDescripText"
             style="@style/CustomEditTextStyle"
-            android:layout_width="339dp"
-            android:layout_height="130dp"
+            android:layout_width="359dp"
+            android:layout_height="167dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:text="Step into the realm of JournaLink and let your voice resonate. Unleash your thoughts, inspire others, and become part of a community that cherishes the transformative power of self-reflection. Begin your journey today, and let your stories unfold."
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/appName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/appName" />
 
         <ImageButton
             android:id="@+id/getStartedButton"
