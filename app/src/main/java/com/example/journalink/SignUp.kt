@@ -31,8 +31,8 @@ class SignUp : AppCompatActivity() {
         signupEmail = findViewById(R.id.emailEditText)
         signupUsername = findViewById(R.id.usernameEditText)
         signupPassword = findViewById(R.id.passwordEditText)
-        signupButton = findViewById(R.id.registerButton)
-        this.signupButton!!.setOnClickListener {
+        val signupButton = findViewById<ImageButton>(R.id.registerButton)
+        signupButton.setOnClickListener {
             database = FirebaseDatabase.getInstance()
             reference = database!!.getReference("users")
             val name = signupName!!.text.toString()

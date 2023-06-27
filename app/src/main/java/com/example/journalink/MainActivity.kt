@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         loginUsername = findViewById(R.id.usernameEditText)
         loginPassword = findViewById(R.id.passwordEditText)
-        loginButton = findViewById(R.id.loginButton)
-        loginButton!!.setOnClickListener {
+        val loginButton = findViewById<ImageButton>(R.id.loginButton)
+        loginButton.setOnClickListener {
             if (!validateUsername() or !validatePassword()) {
             } else {
                 checkUser()
