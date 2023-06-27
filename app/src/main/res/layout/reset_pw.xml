@@ -85,7 +85,7 @@
         <FrameLayout
             android:id="@+id/newPWEditTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="53dp"
             android:layout_margin="8dp"
             android:layout_marginBottom="15dp"
             android:paddingStart="12dp"
@@ -103,26 +103,38 @@
                 android:padding="4dp"
                 app:srcCompat="@drawable/key_icon" />
 
-            <EditText
-                android:id="@+id/newPWEditText"
-                style="@style/CustomEditTextStyle"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/newPasswordTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@null"
-                android:hint="New Password"
-                android:textColor="@color/black" />
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/blue">
+
+                <EditText
+                    android:id="@+id/newPWEditText"
+                    style="@style/CustomEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="New Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </FrameLayout>
 
         <FrameLayout
             android:id="@+id/confirmPWTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="53dp"
             android:layout_margin="8dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
@@ -141,19 +153,31 @@
                 android:padding="4dp"
                 app:srcCompat="@drawable/key_icon" />
 
-            <EditText
-                android:id="@+id/confirmPWEditText"
-                style="@style/CustomEditTextStyle"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@null"
-                android:hint="Confirm Password"
-                android:textColor="@color/black" />
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/blue">
+
+                <EditText
+                    android:id="@+id/confirmPWEditText"
+                    style="@style/CustomEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_gravity="start|center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </FrameLayout>
 
