@@ -19,7 +19,7 @@ class ForgotPassword : AppCompatActivity() {
 
         val loginBtn = findViewById<TextView>(R.id.loginText)
         loginBtn.setOnClickListener {
-            val intent = Intent (this, ResetPassword:: class.java)
+            val intent = Intent (this, MainActivity:: class.java)
             startActivity(intent)
         }
     }
