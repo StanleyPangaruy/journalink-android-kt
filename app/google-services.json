@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "603178735064",
-    "project_id": "journalink-82dfb",
-    "storage_bucket": "journalink-82dfb.appspot.com"
+    "project_number": "1038710955699",
+    "project_id": "journalink-a083a",
+    "storage_bucket": "journalink-a083a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:603178735064:android:890bcbb59242669b608ead",
+        "mobilesdk_app_id": "1:1038710955699:android:2171b1b7621f2d972d1ac6",
         "android_client_info": {
           "package_name": "com.example.journalink"
         }
       },
       "oauth_client": [
         {
-          "client_id": "603178735064-12jvjv7firjl1q74ekklf1tbrtm2u2hf.apps.googleusercontent.com",
+          "client_id": "1038710955699-hou4tpsqfc9i5vuh4qdt26vkg5rpd1hf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA-N7XCghXeB5_EoKYphw6_yvDCS03vJx0"
+          "current_key": "AIzaSyAFfkqLl_Rh9URSvyQZzNs0v8gjJT8A7i4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "603178735064-12jvjv7firjl1q74ekklf1tbrtm2u2hf.apps.googleusercontent.com",
+              "client_id": "1038710955699-hou4tpsqfc9i5vuh4qdt26vkg5rpd1hf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
