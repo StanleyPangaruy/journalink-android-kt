@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -43,29 +44,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- returning arrow -->
-        <ImageButton
-            android:id="@+id/arrow"
-            android:layout_width="26dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/return_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <ImageView
-            android:id="@+id/forgotPWCode"
+            android:id="@+id/forgotPW"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            app:srcCompat="@drawable/code_has_been_sent_"
-            app:layout_constraintTop_toBottomOf="@+id/arrow"
+            android:layout_marginTop="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/forgot_pass_txt" />
 
         <TextView
-            android:id="@+id/codeDescripText"
+            android:id="@+id/emailDescripText"
             style="@style/CustomEditTextStyle"
             android:layout_width="292dp"
             android:layout_height="70dp"
@@ -73,30 +64,30 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="For your security, a verification code has been sent to your email to reset your password."
+            android:layout_marginBottom="20dp"
+            android:text="Please enter your registered email below to receive password reset instructions."
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/forgotPWCode"
+            app:layout_constraintTop_toBottomOf="@+id/forgotPW"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
-            android:id="@+id/emailSentIcon"
+            android:id="@+id/emailIcon"
             android:layout_width="230dp"
             android:layout_height="235dp"
             android:layout_gravity="center"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="5dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/email_sent_icon"
-            app:layout_constraintTop_toBottomOf="@+id/codeDescripText"
+            android:src="@drawable/emailicon"
+            app:layout_constraintTop_toBottomOf="@+id/emailDescripText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <FrameLayout
-            android:id="@+id/usernameEditTextContainer"
+            android:id="@+id/emailEditTextContainer"
             android:layout_width="359dp"
             android:layout_height="46dp"
             android:layout_margin="8dp"
@@ -106,66 +97,67 @@
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/verifyButton"
+            app:layout_constraintBottom_toTopOf="@+id/sendButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailSentIcon"
+            app:layout_constraintTop_toBottomOf="@+id/emailIcon"
             app:layout_constraintVertical_bias="1.0">
 
             <ImageView
-                android:layout_width="29dp"
-                android:layout_height="29dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_gravity="start|center_vertical"
                 android:padding="4dp"
-                app:srcCompat="@drawable/code_icon" />
+                app:srcCompat="@drawable/email_icon__2_" />
 
             <EditText
-                android:id="@+id/codeEditText"
+                android:id="@+id/emailEditText"
                 style="@style/CustomEditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
-                android:hint="Enter the 4 Digit Code"
+                android:hint="Enter your email"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black" />
 
         </FrameLayout>
 
         <ImageButton
-            android:id="@+id/verifyButton"
-            style="@style/VerifyButton"
+            android:id="@+id/sendButton"
+            style="@style/SendButton"
             android:layout_marginTop="10dp"
             android:src="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameEditTextContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/emailEditTextContainer" />
 
         <TextView
-            android:id="@+id/didntReceiveTheCodeText"
+            android:id="@+id/rememberPasswordText"
             style="@style/CustomEditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:text="D i d n ' t  r e c e i v e  t h e  c o d e ?"
+            android:text="Remember password?"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/verifyButton"
+            app:layout_constraintTop_toBottomOf="@+id/sendButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/resendText"
+            android:id="@+id/loginText"
             style="@style/CustomEditTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
-            android:text="R e s e n d"
+            android:text="L o g i n"
             android:textColor="@color/blue"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -173,7 +165,7 @@
             android:shadowDx="7"
             android:shadowDy="10"
             android:shadowRadius="35"
-            app:layout_constraintTop_toBottomOf="@+id/didntReceiveTheCodeText"
+            app:layout_constraintTop_toBottomOf="@+id/rememberPasswordText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
