@@ -17,25 +17,56 @@ class SignUp : AppCompatActivity() {
         binding = SignUpPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         firebaseAuth = FirebaseAuth.getInstance()
-        binding.registerButton.setOnClickListener{
-            println("test")
+        binding.registerButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
             val confirmPassword = binding.confirmPasswordEditText.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
-                if (password == confirmPassword){
-                    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
-                        if (it.isSuccessful){
-                            val intent = Intent(this@SignUp, Login::class.java)
-                            startActivity(intent)
-                            finish()
-                            Toast.makeText(this, "Account Created Successfully.", Toast.LENGTH_SHORT).show()
+
+            fun isEmailValid(email: String): Boolean {
+                val emailRegex = Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
+                return email.matches(emailRegex)
+            }
+
+            fun isPasswordValid(password: String): Boolean {
+                val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
+                return password.matches(passwordRegex)
+            }
+            
+            if (email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
+                if (isEmailValid(email)) {
+                    if (isPasswordValid(password)) {
+                        if (password == confirmPassword) {
+                            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        val intent = Intent(this@SignUp, Login::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                        Toast.makeText(
+                                            this,
+                                            "Account Created Successfully.",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    } else {
+                                        Toast.makeText(
+                                            this,
+                                            task.exception.toString(),
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
                         } else {
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
                         }
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Password must be at least 8 characters long and contain at least one digit, one lowercase letter, one uppercase letter, and one special character.",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Invalid email format.", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
@@ -47,6 +78,6 @@ class SignUp : AppCompatActivity() {
             val intent = Intent (this, Login:: class.java)
             startActivity(intent)
         }
-        // Add other activity code here
+
     }
 }

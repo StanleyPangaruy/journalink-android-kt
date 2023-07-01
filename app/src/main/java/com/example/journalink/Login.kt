@@ -23,9 +23,10 @@ class Login : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             val email = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()){
-                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
-                    if (it.isSuccessful){
+
+            if (isEmailValid(email) && isPasswordValid(password)) { // Validate email and password
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                    if (it.isSuccessful) {
                         Toast.makeText(this, "Logged In Successfully.", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, HomePage::class.java)
                         startActivity(intent)
@@ -34,7 +35,7 @@ class Login : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -49,5 +50,15 @@ class Login : AppCompatActivity() {
             val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
+        return email.matches(emailRegex)
+    }
+
+    private fun isPasswordValid(password: String): Boolean {
+        val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
+        return password.matches(passwordRegex)
     }
 }
