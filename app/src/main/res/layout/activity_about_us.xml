@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/closebutton"
-        android:layout_width="30dp"
-        android:layout_height="32dp"
+        android:layout_width="21dp"
+        android:layout_height="25dp"
         android:background="@drawable/xbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,8 +31,8 @@
         app:srcCompat="@drawable/about_us_txt" />
 
     <ScrollView
-        android:layout_width="400dp"
-        android:layout_height="636dp"
+        android:layout_width="395dp"
+        android:layout_height="601dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
