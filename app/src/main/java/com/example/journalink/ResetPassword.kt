@@ -14,7 +14,7 @@ class ResetPassword : AppCompatActivity() {
 
         val loginBtn = findViewById<ImageButton>(R.id.loginButton)
         loginBtn.setOnClickListener {
-            val intent = Intent (this, MainActivity:: class.java)
+            val intent = Intent (this, Login:: class.java)
             startActivity(intent)
         }
         val resendBtn = findViewById<TextView>(R.id.resendText)

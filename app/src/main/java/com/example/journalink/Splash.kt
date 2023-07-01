@@ -13,7 +13,7 @@ class Splash : AppCompatActivity() {
 
         val getStartedBtn = findViewById<ImageButton>(R.id.getStartedButton)
         getStartedBtn.setOnClickListener {
-            val intent = Intent (this, MainActivity:: class.java)
+            val intent = Intent (this, Login:: class.java)
             startActivity(intent)
         }
 

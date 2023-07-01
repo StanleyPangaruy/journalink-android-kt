@@ -23,7 +23,10 @@
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".HomePage"
             android:exported="false" />
         <activity
             android:name=".Splash"

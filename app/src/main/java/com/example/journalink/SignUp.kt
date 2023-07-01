@@ -2,10 +2,9 @@ package com.example.journalink
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.journalink.databinding.SignUpPageBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -27,16 +26,16 @@ class SignUp : AppCompatActivity() {
                 if (password == confirmPassword){
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{
                         if (it.isSuccessful){
-                            val intent = Intent(this@SignUp, MainActivity::class.java)
+                            val intent = Intent(this@SignUp, Login::class.java)
                             startActivity(intent)
                             finish()
-                            Toast.makeText(this, "Pogi ni Fidel", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Account Created Successfully.", Toast.LENGTH_SHORT).show()
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Password does not matched", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Fields cannot be empty", Toast.LENGTH_SHORT).show()
@@ -45,7 +44,7 @@ class SignUp : AppCompatActivity() {
 
         val arrowBtn = findViewById<ImageButton>(R.id.arrow)
         arrowBtn.setOnClickListener {
-            val intent = Intent (this, MainActivity:: class.java)
+            val intent = Intent (this, Login:: class.java)
             startActivity(intent)
         }
         // Add other activity code here

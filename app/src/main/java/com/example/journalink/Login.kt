@@ -1,23 +1,23 @@
 package com.example.journalink
-import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import com.example.journalink.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.journalink.databinding.LoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class Login : AppCompatActivity() {
+    private lateinit var binding: LoginPageBinding
     private lateinit var firebaseAuth: FirebaseAuth
     // Perform login with email or username
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.login_page)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = LoginPageBinding.inflate(layoutInflater)
 
         firebaseAuth = FirebaseAuth.getInstance()
         binding.loginButton.setOnClickListener {
@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()){
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
                     if (it.isSuccessful){
-                        val intent = Intent(this, MainActivity::class.java)
+                        Toast.makeText(this, "Logged In Successfully.", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, HomePage::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
