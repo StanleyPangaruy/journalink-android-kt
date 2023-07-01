@@ -7,7 +7,7 @@
     tools:context=".AboutUs">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/closebutton"
         android:layout_width="30dp"
         android:layout_height="32dp"
         android:background="@drawable/xbtn"
@@ -20,7 +20,7 @@
         app:srcCompat="@null" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/AboutUstxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/aboutUsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/about_us_content" />
