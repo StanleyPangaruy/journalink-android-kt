@@ -15,6 +15,7 @@ class Splash : AppCompatActivity() {
         getStartedBtn.setOnClickListener {
             val intent = Intent (this, Login:: class.java)
             startActivity(intent)
+            finish()
         }
 
         // Add other activity code here

@@ -16,11 +16,13 @@ class ResetPassword : AppCompatActivity() {
         loginBtn.setOnClickListener {
             val intent = Intent (this, Login:: class.java)
             startActivity(intent)
+            finish()
         }
         val resendBtn = findViewById<TextView>(R.id.resendText)
         resendBtn.setOnClickListener {
             val intent = Intent (this, ResetPassword:: class.java)
             startActivity(intent)
+            finish()
         }
 
         // Add other activity code here
