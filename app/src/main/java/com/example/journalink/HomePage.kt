@@ -1,7 +1,7 @@
 package com.example.journalink
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.journalink.databinding.ActivityHomePageBinding
 
 class HomePage : AppCompatActivity() {
