@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 
-class viewJournal : AppCompatActivity() {
+class ViewJournal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_journal)

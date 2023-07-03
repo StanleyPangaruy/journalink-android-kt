@@ -32,7 +32,7 @@
             android:name=".CreateJournal"
             android:exported="false" />
         <activity
-            android:name=".viewJournal"
+            android:name=".ViewJournal"
             android:exported="false" />
         <activity
             android:name=".PrivacyPolicy"
