@@ -38,6 +38,12 @@
             android:name=".PrivacyPolicy"
             android:exported="false" />
         <activity
+            android:name=".TermsandConditions"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsPage"
+            android:exported="false" />
+        <activity
             android:name=".Splash"
             android:exported="true">
             <intent-filter>
