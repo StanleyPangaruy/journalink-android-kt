@@ -169,7 +169,7 @@
         android:layout_height="24dp"
         android:background="@color/white"
         android:ems="10"
-        android:hint="Journal Title"
+        android:hint="My First Journal Entry"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="#00008F"
