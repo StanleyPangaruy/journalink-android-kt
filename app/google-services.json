@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "408369185416",
+    "project_id": "journalcreatingdb",
+    "storage_bucket": "journalcreatingdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408369185416:android:6d2fd707609d0bf352153d",
+        "android_client_info": {
+          "package_name": "com.example.journalink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408369185416-2tqdd5ef600ddnvg7s09dchpgvni2oj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8MjmxjMD899MOF-z9R8HuSKMZg6XOFBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408369185416-2tqdd5ef600ddnvg7s09dchpgvni2oj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
