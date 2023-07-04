@@ -1,8 +1,11 @@
 package com.example.journalink
 
-data class Journal (
+import java.util.*
+
+data class Journal(
     val title: String = "",
     val shortDescription: String = "",
     val content: String = "",
-    val uid: String = ""
+    val uid: String = "",
+    val timestamp: Date = Date()
 )
