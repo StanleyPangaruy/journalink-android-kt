@@ -16,5 +16,10 @@ class HomePage : AppCompatActivity() {
             val intent = Intent(this, CreateJournal::class.java)
             startActivity(intent)
         }
+
+        binding.viewjournalbtn.setOnClickListener {
+            val intent = Intent(this, ViewJournal::class.java)
+            startActivity(intent)
+        }
     }
 }
