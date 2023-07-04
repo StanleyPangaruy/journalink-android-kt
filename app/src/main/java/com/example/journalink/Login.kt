@@ -23,7 +23,7 @@ class Login : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.signUpButton.setOnClickListener {
-            val intent = Intent(this, SignUp::class.java)
+            val intent = Intent(this, TermsandConditions::class.java)
             startActivity(intent)
         }
 
@@ -56,7 +56,6 @@ class Login : AppCompatActivity() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    updateUI(null)
                 }
             }
     }
