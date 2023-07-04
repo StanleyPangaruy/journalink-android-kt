@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/bookBg"
-            android:layout_width="259dp"
-            android:layout_height="278dp"
+            android:layout_width="276dp"
+            android:layout_height="284dp"
             android:background="@drawable/journal_design"
             android:backgroundTint="@null"
             android:paddingTop="10dp"
