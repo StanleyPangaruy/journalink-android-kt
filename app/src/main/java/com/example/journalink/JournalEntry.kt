@@ -8,7 +8,7 @@ import java.util.*
 class JournalEntry {
 
     private val db = FirebaseFirestore.getInstance() // get db instance
-    private val journalCollection = db.collection("Journals") // create journal collections
+    val journalCollection = db.collection("Journals") // create journal collections
     private val auth = Firebase.auth
 
     fun createJournal(title: String, shortDescription: String, content: String) {
