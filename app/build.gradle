@@ -58,5 +58,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:32.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-firestore:23.0.3'
+    implementation 'com.firebaseui:firebase-ui-firestore:7.2.0'
+
 
 }
