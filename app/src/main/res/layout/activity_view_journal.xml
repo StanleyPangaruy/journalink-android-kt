@@ -109,15 +109,14 @@
         app:srcCompat="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewJournal"
-        android:layout_width="276dp"
-        android:layout_height="309dp"
+        android:layout_width="278dp"
+        android:layout_height="315dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.579"
+        app:layout_constraintVertical_bias="0.535"
         tools:listitem="@layout/item_rv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
