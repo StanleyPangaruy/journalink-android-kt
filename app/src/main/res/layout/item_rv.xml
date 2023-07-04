@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/textViewTitle"
-            android:layout_width="169dp"
+            android:layout_width="183dp"
             android:layout_height="26dp"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -39,38 +39,39 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/bookBg"
             app:layout_constraintEnd_toEndOf="@+id/bookBg"
-            app:layout_constraintHorizontal_bias="0.633"
+            app:layout_constraintHorizontal_bias="0.645"
             app:layout_constraintStart_toStartOf="@+id/bookBg"
             app:layout_constraintTop_toTopOf="@+id/bookBg"
             app:layout_constraintVertical_bias="0.023" />
 
         <TextView
             android:id="@+id/textViewDescription"
-            android:layout_width="172dp"
-            android:layout_height="36dp"
+            android:layout_width="183dp"
+            android:layout_height="34dp"
             android:layout_marginTop="12dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/bookBg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.519"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.009" />
 
         <TextView
             android:id="@+id/textViewContent"
-            android:layout_width="175dp"
-            android:layout_height="147dp"
+            android:layout_width="183dp"
+            android:layout_height="148dp"
             android:layout_marginTop="83dp"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/bookBg"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/bookBg"
-            app:layout_constraintVertical_bias="0.166" />
+            app:layout_constraintVertical_bias="0.169" />
 
         <TextView
             android:id="@+id/textViewTimestamp"
