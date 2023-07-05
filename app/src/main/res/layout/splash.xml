@@ -7,13 +7,11 @@
     android:layout_height="match_parent">
 
     <!-- Background circles on the left side -->
-
-    <!-- Background circles on the right side -->
     <ImageView
         android:id="@+id/leftCircle1"
-        android:layout_width="50dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="70dp"
+        android:layout_height="193dp"
+        android:layout_marginStart="0dp"
         android:background="@drawable/circle_upper_left2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,16 +20,19 @@
         android:id="@+id/leftCircle2"
         android:layout_width="50dp"
         android:layout_height="150dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="244dp"
         android:background="@drawable/circle_upper_left2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftCircle1" />
+        app:layout_constraintTop_toBottomOf="@id/leftCircle1" />
 
+    <!-- Background circles on the right side -->
     <ImageView
         android:id="@+id/rightCircle1"
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginEnd="-4dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/circle_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/leftCircle1" />
@@ -40,56 +41,58 @@
         android:id="@+id/rightCircle2"
         android:layout_width="193dp"
         android:layout_height="220dp"
-        android:layout_marginTop="176dp"
         android:background="@drawable/circle_bg"
+        android:layout_marginEnd="-7dp"
+        android:layout_marginTop="430dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/leftCircle2" />
+        app:layout_constraintTop_toBottomOf="@+id/rightCircle1" />
 
+    <!-- App logo -->
     <ImageView
         android:id="@+id/appLogo"
         android:layout_width="230dp"
         android:layout_height="215dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="40dp"
         android:scaleType="centerCrop"
         android:src="@drawable/journalink_app_logo"
         app:layout_constraintBottom_toTopOf="@+id/shareYourThoughtsText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/leftCircle1" />
 
+    <!-- Share your thoughts text -->
     <TextView
         android:id="@+id/shareYourThoughtsText"
         style="@style/CustomEditTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:text="Share your thoughts with"
-        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appLogo" />
 
+    <!-- App name -->
     <ImageView
         android:id="@+id/appName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/shareYourThoughtsText"
         app:srcCompat="@drawable/journalinkname_txt" />
 
+    <!-- App description text -->
     <TextView
         android:id="@+id/appDescripText"
         style="@style/CustomEditTextStyle"
         android:layout_width="359dp"
-        android:layout_height="167dp"
+        android:layout_height="147dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="10dp"
@@ -98,10 +101,11 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appName" />
 
+    <!-- Get started button -->
     <ImageButton
         android:id="@+id/getStartedButton"
         style="@style/GetStartedButton"

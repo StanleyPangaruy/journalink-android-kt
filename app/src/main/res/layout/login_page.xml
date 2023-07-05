@@ -60,7 +60,7 @@
             android:id="@+id/appName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="26dp"
             app:srcCompat="@drawable/journalinkname_txt" />
 
         <ImageView
@@ -69,18 +69,20 @@
             android:layout_height="215dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/journalink_app_logo" />
 
         <FrameLayout
             android:id="@+id/usernameEditTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appLogo">
 
             <EditText
@@ -94,10 +96,13 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
-                android:hint="Username / Email"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageView
                 android:layout_width="29dp"
@@ -110,11 +115,13 @@
         <FrameLayout
             android:id="@+id/passwordEditTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/usernameEditTextContainer">
 
             <ImageView
@@ -137,7 +144,7 @@
                     android:id="@+id/passwordEditText"
                     style="@style/CustomEditTextStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
@@ -146,17 +153,21 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
             </com.google.android.material.textfield.TextInputLayout>
         </FrameLayout>
 
         <ImageButton
             android:id="@+id/loginButton"
             style="@style/LoginButton"
-            android:src="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/passwordEditTextContainer" />
-
 
         <TextView
             android:id="@+id/forgotPasswordText"
@@ -176,7 +187,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:text="Don't have an account?"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -187,8 +198,7 @@
             android:id="@+id/signUpButton"
             style="@style/SignUpButton"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@null"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/dontHaveAccountText" />
 
     </LinearLayout>
