@@ -2,7 +2,6 @@ package com.example.journalink
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -35,6 +34,12 @@ class ForgotPassword : AppCompatActivity() {
                 .addOnFailureListener {
                     Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 }
+        }
+        val loginBtn = findViewById<TextView>(R.id.loginText)
+        loginBtn.setOnClickListener {
+            val intent = Intent (this, Login:: class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

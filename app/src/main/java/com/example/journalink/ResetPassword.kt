@@ -20,7 +20,7 @@ class ResetPassword : AppCompatActivity() {
         }
         val resendBtn = findViewById<TextView>(R.id.resendText)
         resendBtn.setOnClickListener {
-            val intent = Intent (this, ResetPassword:: class.java)
+            val intent = Intent (this, ForgotPassword:: class.java)
             startActivity(intent)
             finish()
         }

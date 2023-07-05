@@ -1,0 +1,24 @@
+<!-- activity_settings.xml -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Notifications">
+        <SwitchPreference
+            android:key="pref_key_push_notif"
+            android:title="Enable Push Notification"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Privacy and Security">
+        <SwitchPreference
+            android:key="pref_key_show_notif"
+            android:title="Show Notifications on Lock Screen"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Account Settings">
+        <Preference
+            android:key="pref_key_logout"
+            android:title="Logout"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

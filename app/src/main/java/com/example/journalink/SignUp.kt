@@ -77,6 +77,7 @@ class SignUp : AppCompatActivity() {
         arrowBtn.setOnClickListener {
             val intent = Intent (this, Login:: class.java)
             startActivity(intent)
+            finish()
         }
 
     }
