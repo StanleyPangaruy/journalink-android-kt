@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Splash" >
 
     <!-- Background circles on the left side -->
     <ImageView
@@ -52,7 +53,7 @@
         android:id="@+id/appLogo"
         android:layout_width="230dp"
         android:layout_height="215dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:scaleType="centerCrop"
         android:src="@drawable/journalink_app_logo"
         app:layout_constraintBottom_toTopOf="@+id/shareYourThoughtsText"
@@ -92,10 +93,11 @@
         android:id="@+id/appDescripText"
         style="@style/CustomEditTextStyle"
         android:layout_width="359dp"
-        android:layout_height="147dp"
+        android:layout_height="167dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="24dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="25dp"
         android:text="Step into the realm of JournaLink and let your voice resonate. Unleash your thoughts, inspire others, and become part of a community that cherishes the transformative power of self-reflection. Begin your journey today, and let your stories unfold."
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -109,7 +111,6 @@
     <ImageButton
         android:id="@+id/getStartedButton"
         style="@style/GetStartedButton"
-        android:layout_marginTop="8dp"
         android:src="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
