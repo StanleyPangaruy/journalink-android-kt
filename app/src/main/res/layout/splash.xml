@@ -34,24 +34,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.938" />
 
+    <!-- Share your thoughts text -->
+
     <ImageView
         android:id="@+id/rightCircle1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="143dp"
+        android:layout_height="142dp"
         android:layout_marginTop="55dp"
+        android:layout_marginEnd="-100dp"
         android:background="@drawable/circle_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.908"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/leftCircle1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.015" />
 
-    <!-- Share your thoughts text -->
     <ImageView
         android:id="@+id/rightCircle2"
         android:layout_width="150dp"
         android:layout_height="170dp"
+        android:layout_marginEnd="-100dp"
+        android:layout_marginBottom="-50dp"
         android:background="@drawable/circle_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,8 +115,6 @@
         style="@style/CustomEditTextStyle"
         android:layout_width="309dp"
         android:layout_height="167dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:text="Step into the realm of JournaLink and let your voice resonate. Unleash your thoughts, inspire others, and become part of a community that cherishes the transformative power of self-reflection. Begin your journey today, and let your stories unfold."
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -121,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
+        app:layout_constraintVertical_bias="0.716" />
 
     <ImageButton
         android:id="@+id/getStartedButton"
