@@ -21,9 +21,11 @@
         android:id="@+id/leftCircle2"
         android:layout_width="104dp"
         android:layout_height="172dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="615dp"
+        android:layout_marginStart="-310dp"
+        android:layout_marginTop="490dp"
         android:background="@drawable/circle_lower_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,14 +43,17 @@
     <View
         android:id="@+id/rightCircle2"
         android:layout_width="140dp"
-        android:layout_height="205dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="580dp"
+        android:layout_height="175dp"
+        android:layout_marginEnd="-270dp"
+        android:layout_marginTop="490dp"
         android:background="@drawable/circle_lower_right"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -65,8 +70,8 @@
 
         <ImageView
             android:id="@+id/appLogo"
-            android:layout_width="220dp"
-            android:layout_height="205dp"
+            android:layout_width="205dp"
+            android:layout_height="185dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
@@ -81,8 +86,8 @@
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
 
             <EditText
@@ -95,15 +100,15 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:padding="10dp"
                 android:background="@null"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:padding="10dp"
                 android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="29dp"
@@ -116,27 +121,26 @@
         <FrameLayout
             android:id="@+id/passwordEditTextContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="57dp"
             android:layout_margin="8dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
 
             <ImageView
                 android:layout_width="29dp"
                 android:layout_height="29dp"
                 android:layout_gravity="start|center_vertical"
-                android:padding="4dp"
+                android:padding="2dp"
                 app:srcCompat="@drawable/password_icon" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordTextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="match_parent"
                 android:paddingStart="20dp"
                 android:paddingEnd="0dp"
                 app:hintAnimationEnabled="false"
@@ -150,17 +154,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center_vertical"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="2dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </com.google.android.material.textfield.TextInputLayout>
         </FrameLayout>
 
@@ -169,8 +172,8 @@
             style="@style/LoginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent" />
 
         <TextView
