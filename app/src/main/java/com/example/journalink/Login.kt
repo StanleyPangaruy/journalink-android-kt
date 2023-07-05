@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.journalink.databinding.LoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -21,6 +22,16 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle the back action
+                val intent = Intent(this@Login, Splash::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         binding.signUpButton.setOnClickListener {
             val intent = Intent(this, TermsandConditions::class.java)
@@ -66,7 +77,8 @@ class Login : AppCompatActivity() {
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
+        val passwordRegex =
+            Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
         return password.matches(passwordRegex)
     }
 
