@@ -17,7 +17,7 @@ class TermsandConditions : AppCompatActivity() {
         binding = ActivityTermsandConditionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val btn = findViewById<ImageButton>(R.id.imageButton)
+        val btn = findViewById<ImageButton>(R.id.proceedBtn)
         val checkBox = findViewById<CheckBox>(R.id.checkBox)
         btn.visibility = GONE
         checkBox.setOnCheckedChangeListener { _, isChecked ->
