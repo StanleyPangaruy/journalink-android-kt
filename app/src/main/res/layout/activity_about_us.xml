@@ -44,7 +44,7 @@
             android:id="@+id/aboutUsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/about_us_content" />
+            app:srcCompat="@drawable/updatedaboutus" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
