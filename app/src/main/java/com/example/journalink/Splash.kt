@@ -3,6 +3,7 @@ package com.example.journalink
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -32,6 +33,14 @@ class Splash : AppCompatActivity() {
         }
 
         // Add other activity code here
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Handle the back action
+                finish()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
     private fun reload() {
         val intent = Intent(this@Splash, HomePage::class.java)
