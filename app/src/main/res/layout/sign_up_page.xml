@@ -8,54 +8,61 @@
     tools:context=".SignUp">
 
     <!-- Background circles on the left side -->
-    <View
+    <ImageView
         android:id="@+id/leftCircle1"
         android:layout_width="45dp"
         android:layout_height="190dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/circle_upper_left2"
+        app:layout_constraintDimensionRatio="H,19:95"
+        app:layout_constraintEnd_toStartOf="@id/leftCircle2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
+    <ImageView
         android:id="@+id/leftCircle2"
         android:layout_width="155dp"
         android:layout_height="150dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="635dp"
+        android:layout_marginEnd="195dp"
+        android:layout_marginTop="395dp"
         android:background="@drawable/circle_lower_left2"
+        app:layout_constraintDimensionRatio="H,31:30"
+        app:layout_constraintEnd_toStartOf="@id/rightCircle1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/leftCircle1" />
 
     <!-- Background circles on the right side -->
-
-    <View
+    <ImageView
         android:id="@+id/rightCircle1"
         android:layout_width="60dp"
         android:layout_height="190dp"
         android:background="@drawable/circle_upper_right2"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="110dp"
+        app:layout_constraintDimensionRatio="H,4:19"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leftCircle2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
+    <ImageView
         android:id="@+id/rightCircle2"
         android:layout_width="60dp"
         android:layout_height="190dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="520dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="185dp"
         android:background="@drawable/circle_lower_right2"
+        app:layout_constraintDimensionRatio="H,4:19"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/leftCircle2"
+        app:layout_constraintTop_toBottomOf="@id/rightCircle1" />
 
     <!-- returning arrow -->
     <ImageButton
         android:id="@+id/arrow"
         android:layout_width="26dp"
         android:layout_height="27dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="35dp"
         android:background="@drawable/return_btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,18 +75,23 @@
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageView
             android:id="@+id/appLogo"
             android:layout_width="210dp"
             android:layout_height="205dp"
             android:layout_gravity="center"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="35dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/journalink_app_logo" />
+            android:src="@drawable/journalink_app_logo"
+            app:layout_constraintDimensionRatio="H,42:41"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/signUp"
@@ -87,19 +99,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
+            app:layout_constraintTop_toBottomOf="@id/appLogo"
             app:srcCompat="@drawable/sign_up_txt" />
 
         <FrameLayout
             android:id="@+id/emailEditTextContainer"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp">
+            android:paddingEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/signUp">
 
             <ImageView
                 android:layout_width="29dp"
@@ -129,13 +143,14 @@
             android:id="@+id/passwordEditTextContainer"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp">
+            android:paddingEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/emailEditTextContainer">
 
             <ImageView
                 android:layout_width="29dp"
@@ -175,13 +190,14 @@
             android:id="@+id/confirmPasswordEditTextContainer"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/rounded_frame_layout"
             android:paddingStart="12dp"
-            android:paddingEnd="12dp">
+            android:paddingEnd="12dp"
+            app:layout_constraintTop_toBottomOf="@id/passwordEditTextContainer">
 
             <ImageView
                 android:layout_width="29dp"
@@ -220,7 +236,9 @@
         <ImageButton
             android:id="@+id/registerButton"
             style="@style/RegisterButton"
-            android:src="@null" />
+            android:src="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/confirmPasswordEditTextContainer" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
