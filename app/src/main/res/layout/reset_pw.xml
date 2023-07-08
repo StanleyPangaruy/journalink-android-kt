@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -48,11 +49,12 @@
             android:id="@+id/resetPWCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            app:srcCompat="@drawable/email_sent_txt"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.095"
+            app:srcCompat="@drawable/email_sent_txt" />
 
         <TextView
             android:id="@+id/resetPWDescripText"
@@ -60,36 +62,42 @@
             android:layout_width="292dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
             android:text="Please check your Inbox / Spam and click on the received link to reset your password."
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@+id/resetPWCode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.267" />
 
         <ImageView
             android:id="@+id/emailIconSent"
             android:layout_width="230dp"
             android:layout_height="235dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
             android:scaleType="centerCrop"
             android:src="@drawable/email_sent_icon"
-            app:layout_constraintTop_toBottomOf="@+id/resetPWDescripText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.528" />
 
         <ImageButton
             android:id="@+id/loginButton"
             style="@style/LoginButton"
-            android:layout_marginTop="15dp"
+            android:layout_width="330dp"
+            android:layout_height="65dp"
             android:src="@null"
-            app:layout_constraintTop_toBottomOf="@+id/emailIconSent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.788" />
 
         <TextView
             android:id="@+id/didntReceiveTheCodeText"
@@ -97,13 +105,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
             android:text="D i d n ' t  r e c e i v e  t h e  c o d e ?"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.873" />
 
         <TextView
             android:id="@+id/resendText"
@@ -111,18 +120,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="R e s e n d"
-            android:textColor="@color/blue"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:shadowColor="@color/black"
             android:shadowDx="7"
             android:shadowDy="10"
             android:shadowRadius="35"
-            app:layout_constraintTop_toBottomOf="@+id/didntReceiveTheCodeText"
+            android:text="R e s e n d"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.92" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
