@@ -7,6 +7,7 @@
     tools:context=".journalFeed">
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="-2dp"
@@ -21,6 +22,7 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/bg_design" />
+
     </FrameLayout>
 
     <ImageButton
@@ -57,5 +59,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.221"
         app:srcCompat="@drawable/share_your_story" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="391dp"
+        android:layout_height="546dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/item_container"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
