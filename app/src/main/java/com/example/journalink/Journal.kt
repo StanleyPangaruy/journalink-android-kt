@@ -8,18 +8,18 @@ data class Journal(
     val title: String = "",
     val shortDescription: String = "",
     val content: String = "",
-    val uid: String = "",
-    val timestamp: Date = Date()
+    val uid: String = ""
 ) {
     val date: String
         get() {
             val format = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
-            return format.format(timestamp)
+            return format.format(Date())
         }
 
     val time: String
         get() {
-            val format = SimpleDateFormat("HH:mm", Locale.getDefault())
-            return format.format(timestamp)
+            val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
+            return format.format(Date())
         }
 }
+

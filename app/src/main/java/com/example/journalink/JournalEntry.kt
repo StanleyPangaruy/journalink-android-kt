@@ -8,13 +8,13 @@ import java.util.*
 
 class JournalEntry {
 
-    private val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private val database = FirebaseDatabase.getInstance()
     private val auth = Firebase.auth
 
     fun createJournal(title: String, shortDescription: String, content: String) {
         val currentUserId = auth.currentUser!!.uid
         val journalId = getJournalReference().push().key ?: ""
-        val journal = Journal(journalId, title, shortDescription, content, currentUserId, Calendar.getInstance().time)
+        val journal = Journal(journalId, title, shortDescription, content, currentUserId)
         getJournalReference().child(journalId).setValue(journal)
     }
 
