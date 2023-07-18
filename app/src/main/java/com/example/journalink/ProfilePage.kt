@@ -22,7 +22,6 @@ class ProfilePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfilePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         binding.editProfilebtn.setOnClickListener {
             val intent = Intent(this, EditProfile::class.java)
