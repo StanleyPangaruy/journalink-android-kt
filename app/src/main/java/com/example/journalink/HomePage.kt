@@ -30,6 +30,10 @@ class HomePage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.profileBtn.setOnClickListener {
+            val intent = Intent(this, ProfilePage::class.java)
+            startActivity(intent)
+        }
 
     }
 }
