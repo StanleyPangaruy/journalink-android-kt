@@ -134,7 +134,7 @@
         android:background="@drawable/textbox_userinfo"
         android:ems="10"
         android:hint="Phone Number"
-        android:inputType="number"
+        android:inputType="phone"
         android:paddingEnd="5dp"
         android:paddingBottom="5dp"
         android:textAlignment="center"
