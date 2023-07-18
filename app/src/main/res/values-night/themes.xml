@@ -4,4 +4,8 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <style name="SwitchCompatTheme">
+        <item name="colorControlActivated">@color/white </item>
+    </style>
 </resources>

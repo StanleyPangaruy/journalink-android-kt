@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background circles on the left side -->
+    <View
+        android:id="@+id/leftCircle1"
+        android:layout_width="80dp"
+        android:layout_height="230dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/circle_upper_left2" />
+
+    <View
+        android:id="@+id/leftCircle2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_lower_left"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="685dp" />
+
+    <!-- Background circles on the right side -->
+    <View
+        android:id="@+id/rightCircle1"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:background="@drawable/circle_bg"
+        android:layout_marginStart="290dp"
+        android:layout_marginTop="230dp" />
+
+    <View
+        android:id="@+id/rightCircle2"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="630dp"
+        android:background="@drawable/circle_bg" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/forgotPW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/forgot_pass_txt" />
+
+        <TextView
+            android:id="@+id/emailDescripText"
+            style="@style/CustomEditTextStyle"
+            android:layout_width="292dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Please enter your registered email below to receive password reset instructions."
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/forgotPW"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/emailIcon"
+            android:layout_width="230dp"
+            android:layout_height="235dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/emailicon"
+            app:layout_constraintTop_toBottomOf="@+id/emailDescripText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/emailEditTextContainer"
+            android:layout_width="359dp"
+            android:layout_height="46dp"
+            android:layout_margin="8dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/rounded_frame_layout"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/sendButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailIcon"
+            app:layout_constraintVertical_bias="1.0">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="start|center_vertical"
+                android:padding="4dp"
+                app:srcCompat="@drawable/email_icon__2_" />
+
+            <EditText
+                android:id="@+id/emailEditText"
+                style="@style/CustomEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:hint="Enter your email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black" />
+
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/sendButton"
+            style="@style/SendButton"
+            android:layout_marginTop="10dp"
+            android:src="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailEditTextContainer" />
+
+        <TextView
+            android:id="@+id/rememberPasswordText"
+            style="@style/CustomEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="Remember password?"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@+id/sendButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/loginText"
+            style="@style/CustomEditTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="L o g i n"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:shadowColor="@color/black"
+            android:shadowDx="7"
+            android:shadowDy="10"
+            android:shadowRadius="35"
+            app:layout_constraintTop_toBottomOf="@+id/rememberPasswordText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
