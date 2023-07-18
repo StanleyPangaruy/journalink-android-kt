@@ -29,6 +29,12 @@ class ProfilePage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.returnBtn.setOnClickListener {
+            val intent = Intent(this, HomePage::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         // Initialize Firebase Database
         database = FirebaseDatabase.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
