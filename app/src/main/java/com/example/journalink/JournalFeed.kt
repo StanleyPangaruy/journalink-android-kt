@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.google.firebase.database.FirebaseDatabase
+
+
 
 class JournalFeed : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -20,16 +23,15 @@ class JournalFeed : AppCompatActivity() {
         journalAdapter = JournalAdaptor()
         recyclerView.adapter = journalAdapter
 
-        // Replace "userId" with the actual user ID
-        getUserJournalsFromFirebase("userId") { journals ->
+        getAllJournalsFromFirebase { journals ->
             journalAdapter.submitList(journals)
         }
     }
 
-    // Function to fetch user journals from Firebase Realtime Database
-    private fun getUserJournalsFromFirebase(userId: String, onJournalsFetched: (List<Journal>) -> Unit) {
+    // Function to fetch all journals from Firebase Realtime Database
+    private fun getAllJournalsFromFirebase(onJournalsFetched: (List<Journal>) -> Unit) {
         val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference("users/$userId/journals")
+        val ref = database.getReference("journals/UID")
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -53,5 +55,5 @@ class JournalFeed : AppCompatActivity() {
             }
         })
     }
-
 }
+
