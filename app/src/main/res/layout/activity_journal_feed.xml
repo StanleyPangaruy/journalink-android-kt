@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".journalFeed">
+    tools:context=".JournalFeed">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -61,6 +61,7 @@
         app:srcCompat="@drawable/share_your_story" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="391dp"
         android:layout_height="546dp"
         app:layout_constraintBottom_toBottomOf="parent"

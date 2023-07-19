@@ -23,7 +23,7 @@ class HomePage : AppCompatActivity() {
         }
 
         binding.journalfeedbtn.setOnClickListener {
-            val intent = Intent(this, journalFeed::class.java)
+            val intent = Intent(this, JournalFeed::class.java)
             startActivity(intent)
         }
     }

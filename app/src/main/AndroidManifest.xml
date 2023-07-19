@@ -43,7 +43,7 @@
             android:name=".SettingsPage"
             android:exported="false" />
         <activity
-            android:name=".journalFeed"
+            android:name=".JournalFeed"
             android:exported="false"/>
         <activity
             android:name=".Splash"
