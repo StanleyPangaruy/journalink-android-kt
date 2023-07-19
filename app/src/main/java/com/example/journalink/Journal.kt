@@ -8,18 +8,29 @@ data class Journal(
     val title: String = "",
     val shortDescription: String = "",
     val content: String = "",
-    val uid: String = ""
+    val uid: String = "",
+    val date: String = "",
+    val time: String = ""
 ) {
-    val date: String
-        get() {
+    constructor(id: String, title: String, shortDescription: String, content: String, uid: String) : this(
+        id,
+        title,
+        shortDescription,
+        content,
+        uid,
+        getCurrentDate(),
+        getCurrentTime()
+    )
+
+    companion object {
+        private fun getCurrentDate(): String {
             val format = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
             return format.format(Date())
         }
 
-    val time: String
-        get() {
+        private fun getCurrentTime(): String {
             val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
             return format.format(Date())
         }
+    }
 }
-

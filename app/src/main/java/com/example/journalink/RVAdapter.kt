@@ -1,20 +1,15 @@
 package com.example.journalink
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.database.FirebaseRecyclerAdapter
-import com.firebase.ui.database.FirebaseRecyclerOptions
-import java.text.SimpleDateFormat
-import java.util.*
 
-class RVAdapter(options: FirebaseRecyclerOptions<Journal>) :
-    FirebaseRecyclerAdapter<Journal, RVAdapter.RVViewHolder>(options) {
+class RVAdapter(private val journal: ArrayList<Journal>) :
+    RecyclerView.Adapter<RVAdapter.ViewHolder>() {
 
-    class RVViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
         val textViewContent: TextView = itemView.findViewById(R.id.textViewContent)
@@ -22,12 +17,17 @@ class RVAdapter(options: FirebaseRecyclerOptions<Journal>) :
         val textViewTime: TextView = itemView.findViewById(R.id.textViewTime)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RVViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rv, parent, false)
-        return RVViewHolder(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RVViewHolder, position: Int, model: Journal) {
+    override fun getItemCount(): Int {
+        return journal.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val model = journal[position]
         holder.textViewTitle.text = model.title
         holder.textViewDescription.text = model.shortDescription
         holder.textViewContent.text = model.content
