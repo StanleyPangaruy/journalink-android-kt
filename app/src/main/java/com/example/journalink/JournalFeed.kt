@@ -31,7 +31,7 @@ class JournalFeed : AppCompatActivity() {
     // Function to fetch all journals from Firebase Realtime Database
     private fun getAllJournalsFromFirebase(onJournalsFetched: (List<Journal>) -> Unit) {
         val database = FirebaseDatabase.getInstance()
-        val ref = database.getReference("journals/UID")
+        val ref = database.getReference("journals")
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
