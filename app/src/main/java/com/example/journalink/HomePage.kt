@@ -25,6 +25,15 @@ class HomePage : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.viewjournalbtn.setOnClickListener {
+            val intent = Intent(this, ViewJournal::class.java)
+            startActivity(intent)
+        }
+
+        binding.profileBtn.setOnClickListener {
+            val intent = Intent(this, ProfilePage::class.java)
+            startActivity(intent)
+        }
 
     }
 }

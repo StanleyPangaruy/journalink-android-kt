@@ -4,17 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.journalink.databinding.LoginPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class Login : AppCompatActivity() {
     private lateinit var binding: LoginPageBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,19 +24,10 @@ class Login : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
-
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // Handle the back action
-                val intent = Intent(this@Login, Splash::class.java)
-                startActivity(intent)
-                finish()
-            }
-        }
-        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        database = FirebaseDatabase.getInstance().reference
 
         binding.signUpButton.setOnClickListener {
-            val intent = Intent(this, TermsandConditions::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
 
@@ -67,6 +60,7 @@ class Login : AppCompatActivity() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    updateUI(null)
                 }
             }
     }
@@ -77,16 +71,35 @@ class Login : AppCompatActivity() {
     }
 
     private fun isPasswordValid(password: String): Boolean {
-        val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+\$).{8,}\$")
+        val passwordRegex = Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")
         return password.matches(passwordRegex)
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        // TODO: Implement UI updates after successful login
-        val intent = Intent(this@Login, HomePage::class.java)
-        startActivity(intent)
-        finish()
+        if (user != null) {
+            val userId = user.uid
+            val email = user.email
+
+            // Write the login credentials to the Realtime Database
+            val userRef = database.child("users").child(userId)
+            userRef.child("email").setValue(email)
+                .addOnSuccessListener {
+                    Log.d(TAG, "Login credentials written to the database.")
+                }
+                .addOnFailureListener { exception ->
+                    Log.w(TAG, "Failed to write login credentials to the database.", exception)
+                }
+
+            // TODO: Implement UI updates after successful login
+            val intent = Intent(this@Login, HomePage::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            // Handle the case where the user is null (failed login)
+            Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+        }
     }
+
 
     companion object {
         private const val TAG = "EmailPassword"
