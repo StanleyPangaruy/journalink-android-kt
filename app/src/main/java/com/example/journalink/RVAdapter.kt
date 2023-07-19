@@ -1,6 +1,5 @@
 package com.example.journalink
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import java.text.SimpleDateFormat
-import java.util.*
 
 class RVAdapter(options: FirebaseRecyclerOptions<Journal>) :
     FirebaseRecyclerAdapter<Journal, RVAdapter.RVViewHolder>(options) {
