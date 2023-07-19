@@ -1,13 +1,14 @@
 package com.example.journalink
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
 import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -32,6 +33,13 @@ class ViewJournal() : AppCompatActivity(), Parcelable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_journal)
+
+        val returnbtn = findViewById<ImageButton>(R.id.returnButton)
+        returnbtn.setOnClickListener {
+            val intent = Intent (this, HomePage:: class.java)
+            startActivity(intent)
+            finish()
+        }
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
