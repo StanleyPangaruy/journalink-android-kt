@@ -13,7 +13,7 @@ import java.util.*
 class JournalAdaptor : ListAdapter<Journal, JournalAdaptor.JournalViewHolder>(JournalDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_journal_feed, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_container, parent, false)
         return JournalViewHolder(view)
     }
 
@@ -23,9 +23,9 @@ class JournalAdaptor : ListAdapter<Journal, JournalAdaptor.JournalViewHolder>(Jo
     }
 
     inner class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
-        private val descTextView: TextView = itemView.findViewById(R.id.descTextView)
-        private val dateTextView: TextView = itemView.findViewById(R.id.dateTextView)
+        private val titleTextView: TextView = itemView.findViewById(R.id.journalTitle)
+        private val descTextView: TextView = itemView.findViewById(R.id.shortDesc)
+        private val dateTextView: TextView = itemView.findViewById(R.id.timeStamp)
 
         fun bind(journal: Journal) {
             titleTextView.text = journal.title
