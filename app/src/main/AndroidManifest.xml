@@ -44,7 +44,7 @@
             android:exported="false" />
         <activity
             android:name=".journalFeed"
-            android:exported="true"/>
+            android:exported="false"/>
         <activity
             android:name=".Splash"
             android:exported="true">
