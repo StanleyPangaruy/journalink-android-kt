@@ -39,7 +39,7 @@ class JournalFeed : AppCompatActivity() {
                     val journalId = journalSnapshot.key.toString()
                     val title = journalSnapshot.child("title").value.toString()
                     val shortDesc = journalSnapshot.child("shortDescription").value.toString()
-                    val date = journalSnapshot.child("date").value.toString().toLong()
+                    val date = journalSnapshot.child("date").value.toString()
 
                     val journal = Journal(journalId, title, shortDesc, date)
                     journals.add(journal)

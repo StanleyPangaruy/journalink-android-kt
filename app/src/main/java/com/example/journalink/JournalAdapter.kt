@@ -29,7 +29,7 @@ class JournalAdaptor : ListAdapter<Journal, JournalAdaptor.JournalViewHolder>(Jo
 
         fun bind(journal: Journal) {
             titleTextView.text = journal.title
-            descTextView.text = journal.content.toString()
+            descTextView.text = journal.content
 
             val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
             val timestamp = Date(journal.date)
