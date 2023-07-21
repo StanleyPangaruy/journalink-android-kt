@@ -4,4 +4,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="likes_count"><![CDATA[<string name=\"likes_count\">Likes: %1$d</string>]]></string>
+    <string name="comments_count"><![CDATA[<string name=\"comments_count\">Likes: %1$d</string>]]></string>
 </resources>
