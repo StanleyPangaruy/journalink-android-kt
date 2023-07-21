@@ -1,7 +1,9 @@
 package com.example.journalink
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ class CreateJournal : AppCompatActivity() {
     private lateinit var journalInputUser: EditText
     private lateinit var saveBtn: ImageButton
     private lateinit var journalEntry: JournalEntry
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,17 +33,39 @@ class CreateJournal : AppCompatActivity() {
             val content = journalInputUser.text.toString()
 
             if (title.isNotEmpty() && content.isNotEmpty()) {
-                journalEntry.createJournal(title, shortDescription, content)
+                showProgressDialog("Saving Journal...")
 
-                // navigate to View Journal
-                val intent = Intent(this, ViewJournal::class.java)
-                startActivity(intent)
+                // Simulate a delay to show the loading dialog
+                Handler().postDelayed({
+                    journalEntry.createJournal(title, shortDescription, content)
+
+                    // Dismiss the loading dialog after saving is done
+                    dismissProgressDialog()
+
+                    // Navigate to View Journal
+                    val intent = Intent(this, ViewJournal::class.java)
+                    startActivity(intent)
+                }, 2000) // Simulate 2 seconds delay, replace with actual saving process
+
             }
         }
     }
+
     override fun onBackPressed() {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
 
+    private fun showProgressDialog(message: String) {
+        progressDialog = ProgressDialog(this)
+        progressDialog.setMessage(message)
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+    }
+
+    private fun dismissProgressDialog() {
+        if (progressDialog.isShowing) {
+            progressDialog.dismiss()
+        }
+    }
 }
