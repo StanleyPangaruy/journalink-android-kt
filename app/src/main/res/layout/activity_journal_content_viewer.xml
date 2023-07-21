@@ -24,7 +24,6 @@
             app:srcCompat="@drawable/bg_design" />
 
 
-
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -78,24 +77,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.68" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <ImageButton
         android:id="@+id/commentBtn"
-        android:layout_width="254dp"
-        android:layout_height="42dp"
+        android:layout_width="228dp"
+        android:layout_height="38dp"
         android:background="@drawable/commentbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintVertical_bias="0.82"
         app:srcCompat="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/commentSection"
         android:layout_width="320dp"
-        android:layout_height="110dp"
+        android:layout_height="101dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
