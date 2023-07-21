@@ -62,9 +62,8 @@
                     android:layout_height="193dp"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    app:autoSizeMaxTextSize="20dp"
-                    app:autoSizeMinTextSize="8dp"
-                    app:autoSizeTextType="uniform" />
+                    android:textSize="20sp"
+                    app:autoSizeTextType="none" />
             </LinearLayout>
         </ScrollView>
 
