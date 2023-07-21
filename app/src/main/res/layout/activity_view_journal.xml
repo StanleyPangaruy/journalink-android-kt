@@ -97,10 +97,10 @@
         app:srcCompat="@drawable/see_your_journals_here_" />
 
     <ImageButton
-        android:id="@+id/shareBtn"
+        android:id="@+id/createBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/sharebtn"
+        android:background="@drawable/createbut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
