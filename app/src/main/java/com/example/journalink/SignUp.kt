@@ -107,4 +107,8 @@ class SignUp : AppCompatActivity() {
 
     // Check email and password validity functions
     // ...
+    override fun onBackPressed() {
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+    }
 }

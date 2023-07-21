@@ -60,4 +60,8 @@ class SettingsPage : AppCompatActivity() {
             finish()
         }
     }
+    override fun onBackPressed() {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
 }

@@ -63,6 +63,12 @@ class ProfilePage : AppCompatActivity() {
         binding.EntryName.text = profile?.name ?: ""
         binding.EntryEmail.text = profile?.email ?: ""
         binding.EntryPhoneNumber.text = profile?.phoneNumber ?: ""
-        binding.EntryNickname.text = profile?.nickname ?: ""
+
+        val nicknameWithQuotes = "\"${profile?.nickname ?: ""}\""
+        binding.EntryNickname.text = nicknameWithQuotes
+    }
+    override fun onBackPressed() {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
     }
 }

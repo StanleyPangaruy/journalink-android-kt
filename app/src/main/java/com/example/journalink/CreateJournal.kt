@@ -45,7 +45,7 @@ class CreateJournal : AppCompatActivity() {
                     // Navigate to View Journal
                     val intent = Intent(this, ViewJournal::class.java)
                     startActivity(intent)
-                }, 2000) // Simulate 2 seconds delay, replace with actual saving process
+                }, 5000) // Simulate 5 seconds delay, replace with actual saving process
 
             }
         }
