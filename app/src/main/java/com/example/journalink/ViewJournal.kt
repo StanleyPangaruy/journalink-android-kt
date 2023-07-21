@@ -103,4 +103,8 @@ class ViewJournal() : AppCompatActivity(), Parcelable {
             })
         }
     }
+    override fun onBackPressed() {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
 }
