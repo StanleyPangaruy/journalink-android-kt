@@ -57,6 +57,9 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
+            android:name=".viewJournalViewer"
+            android:exported="false" />
+        <activity
             android:name=".splashScreen"
             android:exported="true">
             <intent-filter>
