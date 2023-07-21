@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="385dp"
-    android:layout_height="180dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:backgroundTint="#00008f">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,10 +16,10 @@
             android:layout_height="196dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.333"
             app:srcCompat="@drawable/bgforjournals" />
 
         <ImageButton
