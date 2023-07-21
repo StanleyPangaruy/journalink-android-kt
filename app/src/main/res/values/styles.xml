@@ -11,8 +11,7 @@
     <style name="ContentTextStyle" parent="android:Widget.TextView">
         <item name="android:textColor">@color/darkblue</item>
         <item name="android:fontFamily">@font/poppinsreg</item>
-        <item name="android:autoSizeMaxTextSize">15dp</item>
-        <item name="android:autoSizeMinTextSize">8dp</item>
+
     </style>
 
 
