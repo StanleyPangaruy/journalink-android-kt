@@ -12,7 +12,6 @@ class RVAdapter(private val journal: ArrayList<Journal>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
-        val textViewContent: TextView = itemView.findViewById(R.id.textViewContent)
         val textViewDate: TextView = itemView.findViewById(R.id.textViewDate)
         val textViewTime: TextView = itemView.findViewById(R.id.textViewTime)
     }
@@ -30,7 +29,6 @@ class RVAdapter(private val journal: ArrayList<Journal>) :
         val model = journal[position]
         holder.textViewTitle.text = model.title
         holder.textViewDescription.text = model.shortDescription
-        holder.textViewContent.text = model.content
         holder.textViewDate.text = model.date
         holder.textViewTime.text = model.time
     }
