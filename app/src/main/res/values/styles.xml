@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TitleTextStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/darkblue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:autoSizeMaxTextSize">50dp</item>
+        <item name="android:autoSizeMinTextSize">10dp</item>
+    </style>
+
+    <style name="ContentTextStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/darkblue</item>
+        <item name="android:fontFamily">@font/poppinsreg</item>
+        <item name="android:autoSizeMaxTextSize">15dp</item>
+        <item name="android:autoSizeMinTextSize">8dp</item>
+    </style>
+
+
+</resources>
