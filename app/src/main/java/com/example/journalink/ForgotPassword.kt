@@ -24,11 +24,16 @@ class ForgotPassword : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         sendBtnPassword.setOnClickListener {
-            val sPassword = etPassword.text.toString()
+            val sPassword = etPassword.text.toString().trim()
+            if (sPassword.isEmpty()) {
+                Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             auth.sendPasswordResetEmail(sPassword)
                 .addOnSuccessListener {
-                    Toast.makeText(this,"Please Check your Email!", Toast.LENGTH_SHORT).show()
-                    val intent = Intent (this, ResetPassword:: class.java)
+                    Toast.makeText(this, "Please check your email!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ResetPassword::class.java)
                     startActivity(intent)
                 }
                 .addOnFailureListener {
