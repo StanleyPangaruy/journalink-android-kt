@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/heartCounter"
-            android:layout_width="wrap_content"
+            android:layout_width="22dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="@color/darkblue"
@@ -78,7 +78,7 @@
 
         <TextView
             android:id="@+id/commentCounter"
-            android:layout_width="wrap_content"
+            android:layout_width="22dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="@color/darkblue"
@@ -94,8 +94,8 @@
         <TextView
             android:id="@+id/journalTitle"
             style="@style/CustomTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="301dp"
+            android:layout_height="51dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -107,8 +107,8 @@
         <TextView
             android:id="@+id/shortDesc"
             style="@style/CustomTextStyle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="302dp"
+            android:layout_height="30dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
