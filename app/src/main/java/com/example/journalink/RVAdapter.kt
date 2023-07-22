@@ -9,16 +9,32 @@ import androidx.recyclerview.widget.RecyclerView
 class RVAdapter(private val journal: ArrayList<Journal>) :
     RecyclerView.Adapter<RVAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: onItemClickListener) {
+        mListener = clickListener
+    }
+
+    class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
         val textViewDate: TextView = itemView.findViewById(R.id.textViewDate)
         val textViewTime: TextView = itemView.findViewById(R.id.textViewTime)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rv, parent, false)
-        return ViewHolder(view)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_rv, parent, false)
+        return ViewHolder(itemView, mListener)
     }
 
     override fun getItemCount(): Int {

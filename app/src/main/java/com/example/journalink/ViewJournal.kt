@@ -21,7 +21,6 @@ import com.google.firebase.ktx.Firebase
 class ViewJournal() : AppCompatActivity(), Parcelable {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: RVAdapter
     private lateinit var auth: FirebaseAuth
     private lateinit var journalRef: DatabaseReference
     private lateinit var journal: ArrayList<Journal>
@@ -92,6 +91,18 @@ class ViewJournal() : AppCompatActivity(), Parcelable {
 
                         val jRVAdapter = RVAdapter(journal)
                         recyclerView.adapter = jRVAdapter
+
+                        jRVAdapter.setOnItemClickListener(object : RVAdapter.onItemClickListener{
+                            override fun onItemClick(position: Int) {
+                                val intent = Intent(this@ViewJournal, ViewJournalViewer::class.java)
+
+                                //put extras
+                                intent.putExtra("title", journal[position].title)
+                                intent.putExtra("content", journal[position].content)
+                                startActivity(intent)
+                            }
+
+                        })
 
                         recyclerView.visibility = View.VISIBLE
                     }

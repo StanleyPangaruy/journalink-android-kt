@@ -15,7 +15,7 @@
             android:id="@+id/bookBg"
             android:layout_width="276dp"
             android:layout_height="294dp"
-            android:background="@drawable/journal_design"
+            android:background="@drawable/journalsdesign"
             android:backgroundTint="@null"
             android:paddingTop="10dp"
             android:paddingEnd="-25dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".viewJournalViewer">
+    tools:context=".ViewJournalViewer">
 
     <ImageButton
         android:id="@+id/shareBUTTON"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.297"
-        app:srcCompat="@drawable/journalsdesign" />
+        app:srcCompat="@drawable/journal_whitedesign" />
 
     <TextView
         android:id="@+id/journTitle"
