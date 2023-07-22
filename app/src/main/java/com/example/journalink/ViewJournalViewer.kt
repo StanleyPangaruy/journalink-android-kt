@@ -7,7 +7,6 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.database.FirebaseDatabase
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -35,6 +34,7 @@ class ViewJournalViewer : AppCompatActivity() {
 
         editBUTTON.setOnClickListener {
             openEditDialog()
+        }
         shareBUTTON.setOnClickListener {
             shareJournal()
         }
@@ -116,6 +116,7 @@ class ViewJournalViewer : AppCompatActivity() {
         val journalData = Journal(id, title, shortDescription, content)
 
         dbRef.setValue(journalData)
+    }
     private fun shareJournal() {
         val title = journTitle.text.toString()
         val shortDescription = journshortDesc.text.toString()
@@ -123,7 +124,8 @@ class ViewJournalViewer : AppCompatActivity() {
         val date = getCurrentDate() // Replace this with the actual date value you want to use
 
         // Store the shared data in Firebase Realtime Database under the specific journal ID
-        val databaseReference = FirebaseDatabase.getInstance().getReference("shared_journals").push()
+        val databaseReference =
+            FirebaseDatabase.getInstance().getReference("shared_journals").push()
         val data = mapOf(
             "title" to title,
             "shortDescription" to shortDescription,
@@ -139,7 +141,7 @@ class ViewJournalViewer : AppCompatActivity() {
                 // Failed to share data, handle the error
             }
     }
-
+    
     // Function to get the current date (replace this with your actual date logic)
     private fun getCurrentDate(): String {
         val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
