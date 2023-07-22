@@ -54,5 +54,6 @@
         <item name="android:textColor">@color/darkblue</item>
         <item name="android:fontFamily">@font/poppinsreg</item>
 
+
     </style>
 </resources>
