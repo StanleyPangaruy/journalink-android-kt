@@ -1,5 +1,6 @@
 package com.example.journalink
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
@@ -38,6 +39,11 @@ class ViewJournalViewer : AppCompatActivity() {
         }
         shareBUTTON.setOnClickListener {
             shareJournal()
+        }
+        deleteBUTTON.setOnClickListener {
+            deleteJournal(
+                intent.getStringExtra("id").toString()
+            )
         }
     }
 
@@ -152,6 +158,22 @@ class ViewJournalViewer : AppCompatActivity() {
             .addOnFailureListener {
                 // Failed to share data, handle the error
             }
+    }
+
+    private fun deleteJournal(id:String){
+        val uid = intent.getStringExtra("uid").toString()
+        val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(uid).child(id)
+        val mTask = dbRef.removeValue()
+
+        mTask.addOnSuccessListener {
+            Toast.makeText(this, "Journal Entry Removed.", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, ViewJournal::class.java)
+            finish()
+            startActivity(intent)
+        }.addOnFailureListener{ error ->
+            Toast.makeText(this, "Journal Entry Removal Error.", Toast.LENGTH_LONG).show()
+        }
     }
 
     // Function to get the current date (replace this with your actual date logic)
