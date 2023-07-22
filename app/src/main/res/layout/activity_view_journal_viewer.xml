@@ -23,13 +23,13 @@
         android:id="@+id/closeJournal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/closEbtn"
+        android:background="@drawable/closebut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075"
+        app:layout_constraintVertical_bias="0.065"
         app:srcCompat="@null" />
 
     <ImageButton
@@ -60,8 +60,8 @@
 
     <ImageView
         android:id="@+id/journalCont"
-        android:layout_width="398dp"
-        android:layout_height="427dp"
+        android:layout_width="400dp"
+        android:layout_height="447dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
