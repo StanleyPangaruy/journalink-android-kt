@@ -60,6 +60,12 @@
             android:name=".ViewJournalViewer"
             android:exported="false" />
         <activity
+            android:name=".journalFeed"
+            android:exported="false" />
+        <activity
+            android:name=".journalContentViewer"
+            android:exported="false" />
+        <activity
             android:name=".splashScreen"
             android:exported="true">
             <intent-filter>
