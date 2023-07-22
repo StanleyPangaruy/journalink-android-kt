@@ -2,6 +2,7 @@ package com.example.journalink
 
 import ItemSpacingDecoration
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,31 +29,32 @@ class JournalFeed : AppCompatActivity() {
         recyclerView.adapter = journalAdapter
 
         // Fetch journals from all users
-        getAllUserJournalsFromFirebase { journals ->
+        getAllSharedJournalsFromFirebase { journals ->
             journalAdapter.submitList(journals)
+        }
+        val backButton = findViewById<ImageView>(R.id.backBtn)
+        backButton.setOnClickListener{
+            finish()
         }
     }
 
     // Function to fetch journals from Firebase Realtime Database for all users
-    private fun getAllUserJournalsFromFirebase(onJournalsFetched: (List<Journal>) -> Unit) {
-        val ref = database.getReference("journals")
+    private fun getAllSharedJournalsFromFirebase(onJournalsFetched: (List<Journal>) -> Unit) {
+        val ref = database.getReference("shared_journals")
 
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val journals = mutableListOf<Journal>()
 
-                for (userSnapshot in snapshot.children) {
-                    for (journalSnapshot in userSnapshot.children) {
-                        val journalId = journalSnapshot.key.toString()
-                        val title = journalSnapshot.child("title").value.toString()
-                        val shortDesc = journalSnapshot.child("shortDescription").value.toString()
-                        val date = journalSnapshot.child("date").value.toString()
-                        val uid = journalSnapshot.child("uid").value.toString()
-                        val content = journalSnapshot.child("content").value.toString()
+                for (journalSnapshot in snapshot.children) {
+                    val journalId = journalSnapshot.key.toString()
+                    val title = journalSnapshot.child("title").value.toString()
+                    val shortDesc = journalSnapshot.child("shortDescription").value.toString()
+                    val date = journalSnapshot.child("date").value.toString()
+                    val content = journalSnapshot.child("content").value.toString()
 
-                        val journal = Journal(journalId, title, shortDesc, date, uid, content)
-                        journals.add(journal)
-                    }
+                    val journal = Journal(journalId, title, shortDesc, date, content)
+                    journals.add(journal)
                 }
 
                 onJournalsFetched(journals)
