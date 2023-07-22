@@ -97,6 +97,10 @@ class ViewJournal : AppCompatActivity(), Parcelable {
                                 intent.putExtra("title", journal[position].title)
                                 intent.putExtra("shortDescription", journal[position].shortDescription)
                                 intent.putExtra("content", journal[position].content)
+                                intent.putExtra("uid", journal[position].uid)
+                                intent.putExtra("date", journal[position].date)
+                                intent.putExtra("time", journal[position].time)
+                                intent.putExtra("id", journal[position].id)
                                 startActivity(intent)
                             }
 
