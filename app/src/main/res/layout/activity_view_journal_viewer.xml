@@ -76,7 +76,8 @@
         android:layout_width="225dp"
         android:layout_height="83dp"
         android:gravity="center"
-        app:autoSizeTextType="uniform"
+        android:textSize="20sp"
+        app:autoSizeTextType="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.602"
@@ -84,14 +85,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.187" />
 
-    <ScrollView
-        android:layout_width="225dp"
-        android:layout_height="263dp"
+    <TextView
+        android:id="@+id/journshortDesc"
+        style="@style/TitleTextStyle"
+        android:layout_width="223dp"
+        android:layout_height="51dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        app:autoSizeTextType="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314" />
+
+    <ScrollView
+        android:layout_width="223dp"
+        android:layout_height="192dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.554">
 
         <TextView
             android:id="@+id/journContent"
@@ -100,7 +118,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
-            android:textSize="20sp"
+            android:textSize="12sp"
             app:autoSizeTextType="none" />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
