@@ -34,6 +34,10 @@ class HomePage : AppCompatActivity() {
             val intent = Intent(this, ProfilePage::class.java)
             startActivity(intent)
         }
+        binding.journalfeedbtn.setOnClickListener {
+            val intent = Intent(this, JournalFeed::class.java)
+            startActivity(intent)
+        }
     }
     override fun onBackPressed() {
         moveTaskToBack(true) // Minimize the app.
