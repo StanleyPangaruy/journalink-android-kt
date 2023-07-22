@@ -1,6 +1,6 @@
 package com.example.journalink
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
@@ -8,6 +8,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.FirebaseDatabase
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ViewJournalViewer : AppCompatActivity() {
 
@@ -19,6 +24,8 @@ class ViewJournalViewer : AppCompatActivity() {
     private lateinit var deleteBUTTON: ImageButton
     private lateinit var editBUTTON: ImageButton
 
+    private lateinit var journalId: String // Assuming you have the journal ID available
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_journal_viewer)
@@ -28,6 +35,8 @@ class ViewJournalViewer : AppCompatActivity() {
 
         editBUTTON.setOnClickListener {
             openEditDialog()
+        shareBUTTON.setOnClickListener {
+            shareJournal()
         }
     }
 
@@ -37,13 +46,23 @@ class ViewJournalViewer : AppCompatActivity() {
         journContent = findViewById(R.id.journContent)
 
         editBUTTON = findViewById(R.id.editBUTTON)
+        shareBUTTON = findViewById(R.id.shareBUTTON)
         deleteBUTTON = findViewById(R.id.deleteBUTTON)
+
+        closeJournal = findViewById(R.id.closeJournal)
+        closeJournal.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun setValuesToViews() {
         journTitle.text = intent.getStringExtra("title")
         journshortDesc.text = intent.getStringExtra("shortDescription")
         journContent.text = intent.getStringExtra("content")
+
+        journalId =
+            intent.getStringExtra("journalId").toString() // Assuming you have the journal ID as an extra in the intent
     }
 
     private fun openEditDialog() {
@@ -97,5 +116,33 @@ class ViewJournalViewer : AppCompatActivity() {
         val journalData = Journal(id, title, shortDescription, content)
 
         dbRef.setValue(journalData)
+    private fun shareJournal() {
+        val title = journTitle.text.toString()
+        val shortDescription = journshortDesc.text.toString()
+        val content = journContent.text.toString()
+        val date = getCurrentDate() // Replace this with the actual date value you want to use
+
+        // Store the shared data in Firebase Realtime Database under the specific journal ID
+        val databaseReference = FirebaseDatabase.getInstance().getReference("shared_journals").push()
+        val data = mapOf(
+            "title" to title,
+            "shortDescription" to shortDescription,
+            "content" to content,
+            "date" to date
+        )
+
+        databaseReference.setValue(data)
+            .addOnSuccessListener {
+                // Data shared successfully
+            }
+            .addOnFailureListener {
+                // Failed to share data, handle the error
+            }
+    }
+
+    // Function to get the current date (replace this with your actual date logic)
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
+        return dateFormat.format(Date())
     }
 }
