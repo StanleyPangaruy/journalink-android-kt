@@ -18,16 +18,13 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 
-class ViewJournal() : AppCompatActivity(), Parcelable {
+class ViewJournal : AppCompatActivity(), Parcelable {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var auth: FirebaseAuth
     private lateinit var journalRef: DatabaseReference
     private lateinit var journal: ArrayList<Journal>
 
-    constructor(parcel: Parcel) : this() {
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +43,7 @@ class ViewJournal() : AppCompatActivity(), Parcelable {
 
         auth = Firebase.auth
 
-        journal = arrayListOf<Journal>()
+        journal = arrayListOf()
 
         getJournalData()
 
@@ -62,7 +59,7 @@ class ViewJournal() : AppCompatActivity(), Parcelable {
 
     companion object CREATOR : Parcelable.Creator<ViewJournal> {
         override fun createFromParcel(parcel: Parcel): ViewJournal {
-            return ViewJournal(parcel)
+            return ViewJournal()
         }
 
         override fun newArray(size: Int): Array<ViewJournal?> {
@@ -98,6 +95,7 @@ class ViewJournal() : AppCompatActivity(), Parcelable {
 
                                 //put extras
                                 intent.putExtra("title", journal[position].title)
+                                intent.putExtra("shortDescription", journal[position].shortDescription)
                                 intent.putExtra("content", journal[position].content)
                                 startActivity(intent)
                             }

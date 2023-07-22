@@ -8,6 +8,7 @@ import android.widget.TextView
 class ViewJournalViewer : AppCompatActivity() {
 
     private lateinit var journTitle : TextView
+    private lateinit var journshortDesc : TextView
     private lateinit var journContent : TextView
     private lateinit var shareBUTTON : ImageButton
     private lateinit var closeJournal : ImageButton
@@ -25,6 +26,7 @@ class ViewJournalViewer : AppCompatActivity() {
 
     private fun initView() {
         journTitle = findViewById(R.id.journTitle)
+        journshortDesc = findViewById(R.id.journshortDesc)
         journContent = findViewById(R.id.journContent)
 
         editBUTTON = findViewById(R.id.editBUTTON)
@@ -33,6 +35,7 @@ class ViewJournalViewer : AppCompatActivity() {
 
     private fun setValuesToViews() {
         journTitle.text = intent.getStringExtra("title")
+        journshortDesc.text = intent.getStringExtra("shortDescription")
         journContent.text = intent.getStringExtra("content")
     }
 }
