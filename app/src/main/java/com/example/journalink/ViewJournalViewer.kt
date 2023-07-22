@@ -42,6 +42,12 @@ class ViewJournalViewer : AppCompatActivity() {
         editBUTTON = findViewById(R.id.editBUTTON)
         shareBUTTON = findViewById(R.id.shareBUTTON)
         deleteBUTTON = findViewById(R.id.deleteBUTTON)
+
+        closeJournal = findViewById(R.id.closeJournal)
+        closeJournal.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun setValuesToViews() {
@@ -56,14 +62,15 @@ class ViewJournalViewer : AppCompatActivity() {
     private fun shareJournal() {
         val title = journTitle.text.toString()
         val shortDescription = journshortDesc.text.toString()
+        val content = journContent.text.toString()
         val date = getCurrentDate() // Replace this with the actual date value you want to use
 
         // Store the shared data in Firebase Realtime Database under the specific journal ID
         val databaseReference = FirebaseDatabase.getInstance().getReference("shared_journals").push()
-        val newJournalId = databaseReference.key.toString()
         val data = mapOf(
             "title" to title,
             "shortDescription" to shortDescription,
+            "content" to content,
             "date" to date
         )
 
