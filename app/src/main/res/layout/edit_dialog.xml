@@ -1,73 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/titleEditdialog"
         style="@style/TitleTextStyle"
-        android:layout_width="381dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/text_box_dialog"
         android:ems="10"
         android:hint="Title"
         android:inputType="text"
-        android:paddingStart="26dp"
-        android:paddingEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.363"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.00999999" />
+        android:layout_marginTop="10dp"
+        android:maxLength="50"
+        android:minWidth="381dp"
+        android:minHeight="49dp"
+        android:maxWidth="381dp"
+        android:maxHeight="49dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
 
     <EditText
         android:id="@+id/shortdescEditdialog"
         style="@style/ContentTextStyle"
-        android:layout_width="381dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/text_box_dialog"
         android:ems="10"
         android:gravity="start"
         android:hint="Short Description"
+        android:layout_marginTop="10dp"
         android:inputType="textMultiLine"
-        android:paddingStart="26dp"
-        android:paddingTop="3dp"
-        android:paddingEnd="10dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118" />
-
-    <ImageButton
-        android:id="@+id/updatebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/updatebut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421"
-        app:srcCompat="@null" />
+        android:maxLength="120"
+        android:minWidth="381dp"
+        android:minHeight="65dp"
+        android:maxWidth="381dp"
+        android:maxHeight="65dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textStyle="italic" />
 
     <ScrollView
-        android:layout_width="381dp"
-        android:layout_height="89dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/text_box_dialog"
         android:paddingStart="15dp"
         android:paddingEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.366"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263">
+        android:layout_marginTop="10dp">
 
         <EditText
             android:id="@+id/contentEditdialog"
@@ -75,13 +61,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:ems="10"
             android:gravity="start"
             android:hint="Content"
             android:inputType="textMultiLine"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="10dp" />
+            android:minWidth="381dp"
+            android:minHeight="89dp"
+            android:maxWidth="381dp"
+            android:maxHeight="390dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:padding="8dp" />
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/updatebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/updatebut"
+        android:layout_marginTop="16dp"
+        android:padding="8dp" />
+
+</LinearLayout>

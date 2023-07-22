@@ -2,8 +2,12 @@ package com.example.journalink
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.google.firebase.database.FirebaseDatabase
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -29,6 +33,8 @@ class ViewJournalViewer : AppCompatActivity() {
         initView()
         setValuesToViews()
 
+        editBUTTON.setOnClickListener {
+            openEditDialog()
         shareBUTTON.setOnClickListener {
             shareJournal()
         }
@@ -59,6 +65,57 @@ class ViewJournalViewer : AppCompatActivity() {
             intent.getStringExtra("journalId").toString() // Assuming you have the journal ID as an extra in the intent
     }
 
+    private fun openEditDialog() {
+        val mDialog = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val mDialogView = inflater.inflate(R.layout.edit_dialog, null)
+
+        mDialog.setView(mDialogView)
+
+        val titleEditdialog = mDialogView.findViewById<EditText>(R.id.titleEditdialog)
+        val shortdescEditdialog = mDialogView.findViewById<EditText>(R.id.shortdescEditdialog)
+        val contentEditdialog = mDialogView.findViewById<EditText>(R.id.contentEditdialog)
+
+        val updatebtn = mDialogView.findViewById<ImageButton>(R.id.updatebtn)
+
+        titleEditdialog.setText(intent.getStringExtra("title").toString())
+        shortdescEditdialog.setText(intent.getStringExtra("shortDescription").toString())
+        contentEditdialog.setText(intent.getStringExtra("content").toString())
+
+        val alertDialog = mDialog.create()
+        alertDialog.show()
+
+        updatebtn.setOnClickListener {
+            val id = intent.getStringExtra("id").toString()
+
+            updateJournalEntry(
+                id,
+                titleEditdialog.text.toString(),
+                shortdescEditdialog.text.toString(),
+                contentEditdialog.text.toString()
+            )
+
+            Toast.makeText(applicationContext, "Journal Entry Updated", Toast.LENGTH_LONG).show()
+
+            journTitle.text = titleEditdialog.text.toString()
+            journshortDesc.text = shortdescEditdialog.text.toString()
+            journContent.text = contentEditdialog.text.toString()
+
+            alertDialog.dismiss()
+
+        }
+    }
+
+    private fun updateJournalEntry(
+        id: String,
+        title: String,
+        shortDescription: String,
+        content: String
+    ) {
+        val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(id)
+        val journalData = Journal(id, title, shortDescription, content)
+
+        dbRef.setValue(journalData)
     private fun shareJournal() {
         val title = journTitle.text.toString()
         val shortDescription = journshortDesc.text.toString()
