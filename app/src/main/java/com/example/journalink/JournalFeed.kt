@@ -6,7 +6,6 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.FirebaseDatabase
 
@@ -25,7 +24,7 @@ class JournalFeed : AppCompatActivity() {
 
         database = FirebaseDatabase.getInstance()
 
-        journalAdapter = JournalFeedAdapter()
+        journalAdapter = JournalFeedAdapter(this)
         recyclerView.adapter = journalAdapter
 
         // Fetch journals from all users
@@ -52,8 +51,11 @@ class JournalFeed : AppCompatActivity() {
                     val shortDesc = journalSnapshot.child("shortDescription").value.toString()
                     val date = journalSnapshot.child("date").value.toString()
                     val content = journalSnapshot.child("content").value.toString()
+                    val time = journalSnapshot.child("time").value.toString()
+                    val likes = journalSnapshot.child("likes").getValue(Int::class.java) ?: 0
+                    val comments = journalSnapshot.child("comments").getValue(Int::class.java) ?: 0
 
-                    val journal = JournalFeedData(journalId, title, shortDesc, date, content)
+                    val journal = JournalFeedData(journalId, title, shortDesc, date, content, time, likes, comments)
                     journals.add(journal)
                 }
 

@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
-            android:textSize="20sp"
+            android:textSize="10sp"
             app:autoSizeTextType="none" />
     </ScrollView>
 

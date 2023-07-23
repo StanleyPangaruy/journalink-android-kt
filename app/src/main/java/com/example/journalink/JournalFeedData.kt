@@ -8,9 +8,12 @@ data class JournalFeedData(
     val title: String = "",
     val shortDescription: String = "",
     val date: String = "",
-    val uid: String = "",
     val content: String = "",
-    val time: String = ""
+    val time: String = "",
+    var likes: Int = 0,
+    var comments: Int = 0,
+    val uid: String = ""
+
 ) {
     constructor(id: String, title: String, shortDescription: String, content: String, uid: String) : this(
         id,
