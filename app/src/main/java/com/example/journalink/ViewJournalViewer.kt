@@ -141,7 +141,6 @@ class ViewJournalViewer : AppCompatActivity() {
                 // Failed to share data, handle the error
             }
     }
-    
     // Function to get the current date (replace this with your actual date logic)
     private fun getCurrentDate(): String {
         val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
