@@ -33,10 +33,17 @@ class ViewJournalViewer : AppCompatActivity() {
         setValuesToViews()
 
         editBUTTON.setOnClickListener {
-            openEditDialog()
+            val id = intent.getStringExtra("id").toString()
+            val title = intent.getStringExtra("title").toString()
+            openEditDialog(id, title)
         }
         shareBUTTON.setOnClickListener {
             shareJournal()
+        }
+        deleteBUTTON.setOnClickListener {
+            deleteJournal(
+                intent.getStringExtra("id").toString()
+            )
         }
     }
 
@@ -65,7 +72,7 @@ class ViewJournalViewer : AppCompatActivity() {
             intent.getStringExtra("journalId").toString() // Assuming you have the journal ID as an extra in the intent
     }
 
-    private fun openEditDialog() {
+    private fun openEditDialog(id: String, title: String) {
         val mDialog = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val mDialogView = inflater.inflate(R.layout.edit_dialog, null)
@@ -81,6 +88,10 @@ class ViewJournalViewer : AppCompatActivity() {
         titleEditdialog.setText(intent.getStringExtra("title").toString())
         shortdescEditdialog.setText(intent.getStringExtra("shortDescription").toString())
         contentEditdialog.setText(intent.getStringExtra("content").toString())
+        val id = intent.getStringExtra("id").toString()
+        val uid = intent.getStringExtra("uid").toString()
+        val date = getCurrentDate()
+        val time = getCurrentTime()
 
         val alertDialog = mDialog.create()
         alertDialog.show()
@@ -92,7 +103,10 @@ class ViewJournalViewer : AppCompatActivity() {
                 id,
                 titleEditdialog.text.toString(),
                 shortdescEditdialog.text.toString(),
-                contentEditdialog.text.toString()
+                contentEditdialog.text.toString(),
+                uid,
+                date,
+                time,
             )
 
             Toast.makeText(applicationContext, "Journal Entry Updated", Toast.LENGTH_LONG).show()
@@ -110,13 +124,17 @@ class ViewJournalViewer : AppCompatActivity() {
         id: String,
         title: String,
         shortDescription: String,
-        content: String
+        content: String,
+        uid: String,
+        date: String,
+        time: String
     ) {
-        val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(id)
-        val journalData = Journal(id, title, shortDescription, content)
+        val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(uid).child(id)
+        val journalData = Journal(id, title, shortDescription, content, uid, date, time)
 
         dbRef.setValue(journalData)
     }
+
     private fun shareJournal() {
         val title = journTitle.text.toString()
         val shortDescription = journshortDesc.text.toString()
@@ -141,9 +159,31 @@ class ViewJournalViewer : AppCompatActivity() {
                 // Failed to share data, handle the error
             }
     }
+
+    private fun deleteJournal(id:String){
+        val uid = intent.getStringExtra("uid").toString()
+        val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(uid).child(id)
+        val mTask = dbRef.removeValue()
+
+        mTask.addOnSuccessListener {
+            Toast.makeText(this, "Journal Entry Removed.", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, ViewJournal::class.java)
+            finish()
+            startActivity(intent)
+        }.addOnFailureListener{ error ->
+            Toast.makeText(this, "Journal Entry Removal Error.", Toast.LENGTH_LONG).show()
+        }
+    }
+
     // Function to get the current date (replace this with your actual date logic)
     private fun getCurrentDate(): String {
         val dateFormat = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
         return dateFormat.format(Date())
+    }
+
+    private fun getCurrentTime(): String {
+        val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        return format.format(Date())
     }
 }

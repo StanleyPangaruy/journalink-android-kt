@@ -93,7 +93,7 @@
 
         <TextView
             android:id="@+id/journalTitle"
-            style="@style/CustomTextStyle"
+            style="@style/TitleTextStyle"
             android:layout_width="301dp"
             android:layout_height="51dp"
             android:paddingStart="10dp"
@@ -106,7 +106,7 @@
 
         <TextView
             android:id="@+id/shortDesc"
-            style="@style/CustomTextStyle2"
+            style="@style/ContentTextStyle"
             android:layout_width="302dp"
             android:layout_height="30dp"
             android:paddingStart="10dp"
