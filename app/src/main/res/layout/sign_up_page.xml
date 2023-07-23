@@ -63,7 +63,7 @@
         android:layout_height="27dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="35dp"
-        android:background="@drawable/return_btn"
+        android:background="@drawable/return_btn1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -119,7 +119,7 @@
             android:layout_height="29dp"
             android:layout_gravity="start|center_vertical"
             android:padding="4dp"
-            app:srcCompat="@drawable/email_icon" />
+            app:srcCompat="@drawable/email_icon2" />
 
         <EditText
             android:id="@+id/emailEditText"
@@ -171,7 +171,7 @@
                 android:id="@+id/confirmPasswordEditText"
                 style="@style/CustomEditTextStyle"
                 android:layout_width="300dp"
-                android:layout_height="match_parent"
+                android:layout_height="57dp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
@@ -219,7 +219,7 @@
                 android:id="@+id/passwordEditText"
                 style="@style/CustomEditTextStyle"
                 android:layout_width="300dp"
-                android:layout_height="match_parent"
+                android:layout_height="57dp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
