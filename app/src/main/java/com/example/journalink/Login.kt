@@ -104,4 +104,9 @@ class Login : AppCompatActivity() {
     companion object {
         private const val TAG = "EmailPassword"
     }
+    
+    override fun onBackPressed() {
+        moveTaskToBack(true) // Minimize the app.
+    }
+
 }

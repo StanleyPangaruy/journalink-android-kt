@@ -9,6 +9,8 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.journalink.databinding.ActivityHomePageBinding
+import com.example.journalink.databinding.ActivityViewJournalBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -20,6 +22,7 @@ import com.google.firebase.ktx.Firebase
 
 class ViewJournal : AppCompatActivity(), Parcelable {
 
+    private lateinit var binding: ActivityViewJournalBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var auth: FirebaseAuth
     private lateinit var journalRef: DatabaseReference
@@ -29,6 +32,11 @@ class ViewJournal : AppCompatActivity(), Parcelable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_journal)
+
+        binding.createBtn.setOnClickListener {
+            val intent = Intent(this, CreateJournal::class.java)
+            startActivity(intent)
+        }
 
         val returnbtn = findViewById<ImageButton>(R.id.returnButton)
         returnbtn.setOnClickListener {

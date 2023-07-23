@@ -21,6 +21,13 @@ class CreateJournal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_journal)
 
+        val returnbtn = findViewById<ImageButton>(R.id.returnbtn)
+        returnbtn.setOnClickListener {
+            val intent = Intent (this, HomePage:: class.java)
+            startActivity(intent)
+            finish()
+        }
+
         journalTitleInput = findViewById(R.id.journaltitleInput)
         shortDescriptionTxt = findViewById(R.id.shortDescriptiontxt)
         journalInputUser = findViewById(R.id.journalInputuser)
