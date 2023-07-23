@@ -31,7 +31,9 @@ class ViewJournal : AppCompatActivity(), Parcelable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_journal)
+        binding = ActivityViewJournalBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         binding.createBtn.setOnClickListener {
             val intent = Intent(this, CreateJournal::class.java)
@@ -51,7 +53,7 @@ class ViewJournal : AppCompatActivity(), Parcelable {
 
         auth = Firebase.auth
 
-        journal = arrayListOf()
+        journal = ArrayList<Journal>()
 
         getJournalData()
 
