@@ -38,41 +38,49 @@
         app:srcCompat="@drawable/journalfeed_txt" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="247dp"
-        android:layout_height="290dp"
+        android:id="@+id/contjourn"
+        android:layout_width="331dp"
+        android:layout_height="498dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35000002"
+        app:layout_constraintVertical_bias="0.64"
         app:srcCompat="@drawable/journalcontainer" />
 
     <TextView
         android:id="@+id/titletxt"
         style="@style/TitleTextStyle"
-        android:layout_width="185dp"
+        android:layout_width="236dp"
         android:layout_height="60dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="206dp"
         android:gravity="center"
         app:autoSizeMaxTextSize="50dp"
         app:autoSizeMinTextSize="10dp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
-        app:layout_constraintHorizontal_bias="0.58"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintBottom_toBottomOf="@+id/contjourn"
+        app:layout_constraintEnd_toEndOf="@+id/contjourn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/contjourn"
+        app:layout_constraintTop_toTopOf="@+id/contjourn"
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <ScrollView
-        android:layout_width="185dp"
-        android:layout_height="183dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48000002">
+        android:layout_width="236dp"
+        android:layout_height="244dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="84dp"
+        app:layout_constraintBottom_toBottomOf="@+id/contjourn"
+        app:layout_constraintEnd_toEndOf="@+id/contjourn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/contjourn"
+        app:layout_constraintTop_toTopOf="@+id/contjourn"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/contentTxt"
@@ -97,47 +105,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.061"
         app:srcCompat="@null" />
-
-    <EditText
-        android:id="@+id/commentBox"
-        android:layout_width="318dp"
-        android:layout_height="54dp"
-        android:background="@drawable/commentbox"
-        android:ems="10"
-        android:hint="Add comment..."
-        android:inputType="textMultiLine"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:textColor="#00008f"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
-
-    <ImageButton
-        android:id="@+id/commentBtn"
-        android:layout_width="228dp"
-        android:layout_height="38dp"
-        android:background="@drawable/commentbtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82"
-        app:srcCompat="@null" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/commentSection"
-        android:layout_width="320dp"
-        android:layout_height="101dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98"
-        tools:listitem="@layout/comment_section_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
