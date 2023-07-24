@@ -10,9 +10,40 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeedData, JournalFeedAdapter.JournalViewHolder>(JournalDiffCallback()) {
+    private val likedJournalsSet = mutableSetOf<String>()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val currentUser = auth.currentUser
+
+    init {
+        // Retrieve the liked journals of the current user from Firebase Realtime Database
+        val uid = currentUser?.uid
+        if (uid != null) {
+            val userLikedJournalsRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("likedJournals")
+            userLikedJournalsRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    likedJournalsSet.clear()
+                    for (journalSnapshot in snapshot.children) {
+                        val journalId = journalSnapshot.key
+                        if (!journalId.isNullOrEmpty()) {
+                            likedJournalsSet.add(journalId)
+                        }
+                    }
+                    notifyDataSetChanged()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle error, if necessary
+                }
+            })
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_container, parent, false)
@@ -22,18 +53,53 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
     override fun onBindViewHolder(holder: JournalViewHolder, position: Int) {
         val journal = getItem(position)
         holder.bind(journal)
+
+        if (journal.id in likedJournalsSet) {
+            holder.likeButton.setImageResource(R.drawable.ic_liked) // Set the liked icon
+        } else {
+            holder.likeButton.setImageResource(R.drawable.ic_unliked) // Set the unliked icon
+        }
+
         holder.likeButton.setOnClickListener {
-            // Increment likes count and update in the Firebase Realtime Database
+            if (journal.id in likedJournalsSet) {
+                // The user has already liked this journal, so unlike it
+                journal.likedByUser = false
+                likedJournalsSet.remove(journal.id)
+                journal.likes--
+
+                // Update the like button icon to unliked
+                holder.likeButton.setImageResource(R.drawable.ic_unliked)
+            } else {
+                // The user has not liked this journal, so like it
+                journal.likedByUser = true
+                likedJournalsSet.add(journal.id)
+                journal.likes++
+
+                // Update the like button icon to liked
+                holder.likeButton.setImageResource(R.drawable.ic_liked)
+            }
+
+            // Update the likes count in the Firebase Realtime Database
             val likesRef = FirebaseDatabase.getInstance().getReference("shared_journals").child(journal.id).child("likes")
-            journal.likes++
             likesRef.setValue(journal.likes)
+
+            holder.likesTextView.text = journal.likes.toString()
+
+            // Update the liked journals node for the current user in the Firebase Realtime Database
+            val uid = currentUser?.uid
+            if (uid != null) {
+                val userLikedJournalsRef =
+                    FirebaseDatabase.getInstance().getReference("users").child(uid).child("likedJournals")
+                if (journal.likedByUser) {
+                    // If the journal is liked, add it to the likedJournals node
+                    userLikedJournalsRef.child(journal.id).setValue(true)
+                } else {
+                    // If the journal is unliked, remove it from the likedJournals node
+                    userLikedJournalsRef.child(journal.id).removeValue()
+                }
+            }
         }
-        holder.commentButton.setOnClickListener {
-            // Open the journal details page for comments
-            val intent = Intent(holder.itemView.context, JournalContentViewer::class.java)
-            intent.putExtra("journalId", journal.id)
-            holder.itemView.context.startActivity(intent)
-        }
+
     }
 
     inner class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,7 +108,7 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
         private val titleTextView: TextView = itemView.findViewById(R.id.journalTitle)
         private val descTextView: TextView = itemView.findViewById(R.id.shortDesc)
         private val dateTextView: TextView = itemView.findViewById(R.id.timeStamp)
-        private val likesTextView: TextView = itemView.findViewById(R.id.heartCounter)
+        val likesTextView: TextView = itemView.findViewById(R.id.heartCounter)
         private val commentsTextView: TextView = itemView.findViewById(R.id.commentCounter)
 
         fun bind(journal: JournalFeedData) {
@@ -51,6 +117,12 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
             dateTextView.text = journal.date
             likesTextView.text = journal.likes.toString()
             commentsTextView.text = journal.comments.toString()
+
+            if (journal.likedByUser) {
+                likeButton.setImageResource(R.drawable.ic_liked) // Set the liked icon
+            } else {
+                likeButton.setImageResource(R.drawable.ic_unliked) // Set the unliked icon
+            }
 
             itemView.setOnClickListener {
                 // Open ActivityJournalContentViewer and pass journal data
@@ -61,6 +133,24 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
                 context.startActivity(intent)
 
             }
+            likeButton.setOnClickListener {
+                // Same as before
+
+                // Update the liked journals node for the current user in the Firebase Realtime Database
+                val uid = currentUser?.uid
+                if (uid != null) {
+                    val userLikedJournalsRef =
+                        FirebaseDatabase.getInstance().getReference("users").child(uid).child("likedJournals")
+                    if (journal.likedByUser) {
+                        // If the journal is liked, add it to the likedJournals node
+                        userLikedJournalsRef.child(journal.id).setValue(true)
+                    } else {
+                        // If the journal is unliked, remove it from the likedJournals node
+                        userLikedJournalsRef.child(journal.id).removeValue()
+                    }
+                }
+            }
+
         }
     }
 

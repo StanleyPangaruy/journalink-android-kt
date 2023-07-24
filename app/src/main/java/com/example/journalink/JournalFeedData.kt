@@ -9,22 +9,12 @@ data class JournalFeedData(
     val shortDescription: String = "",
     val date: String = "",
     val content: String = "",
-    val time: String = "",
     var likes: Int = 0,
     var comments: Int = 0,
+    var likedByUser: Boolean,
     val uid: String = ""
 
 ) {
-    constructor(id: String, title: String, shortDescription: String, content: String, uid: String) : this(
-        id,
-        title,
-        shortDescription,
-        content,
-        uid,
-//        getCurrentDate(),
-        getCurrentTime()
-    )
-
     companion object {
 //        private fun getCurrentDate(): String {
 //            val format = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())

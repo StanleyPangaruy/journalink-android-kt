@@ -51,11 +51,11 @@ class JournalFeed : AppCompatActivity() {
                     val shortDesc = journalSnapshot.child("shortDescription").value.toString()
                     val date = journalSnapshot.child("date").value.toString()
                     val content = journalSnapshot.child("content").value.toString()
-                    val time = journalSnapshot.child("time").value.toString()
                     val likes = journalSnapshot.child("likes").getValue(Int::class.java) ?: 0
                     val comments = journalSnapshot.child("comments").getValue(Int::class.java) ?: 0
+                    val likedByUser = journalSnapshot.child("subscribed").getValue(Boolean::class.java) ?: false
 
-                    val journal = JournalFeedData(journalId, title, shortDesc, date, content, time, likes, comments)
+                    val journal = JournalFeedData(journalId, title, shortDesc, date, content, likes, comments, likedByUser)
                     journals.add(journal)
                 }
 
