@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JournaLink"
         tools:targetApi="31">
-        
+
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
@@ -65,6 +65,9 @@
         <activity
             android:name=".JournalContentViewer"
             android:exported="false" />
+        <activity
+            android:name=".journalThoughts"
+            android:exported="false">
         <activity
             android:name=".splashScreen"
             android:exported="true">
