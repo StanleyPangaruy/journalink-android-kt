@@ -19,10 +19,16 @@ class JournalThoughts : AppCompatActivity() {
     private var PostsRef: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
     private var Post_Key: String? = null
+    private lateinit var closeComments: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_journal_thoughts)
+
+        closeComments = findViewById(R.id.xbutton)
+        closeComments.setOnClickListener {
+            finish()
+        }
 
         // Initialize the necessary views and variables
         CommentsList = findViewById(R.id.recyclerView)

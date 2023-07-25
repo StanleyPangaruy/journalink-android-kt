@@ -44,6 +44,32 @@
         app:layout_constraintVertical_bias="0.059"
         app:srcCompat="@null" />
 
+    <TextView
+        android:id="@+id/emptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No comments yet. Be the first one to comment!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="387dp"
+        android:layout_height="463dp"
+        app:layout_constraintBottom_toBottomOf="@id/commentBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562"
+        tools:listitem="@layout/container_comments"/>
+
     <EditText
         android:id="@+id/commentBox"
         android:layout_width="336dp"
@@ -53,7 +79,7 @@
         android:gravity="start"
         android:inputType="textMultiLine"
         android:paddingStart="10dp"
-        android:paddingTop="3dp"
+        android:paddingTop="10dp"
         android:paddingEnd="50dp"
         android:hint="Write a comment..."
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,30 +99,4 @@
         app:layout_constraintStart_toStartOf="@+id/commentBox"
         app:layout_constraintTop_toTopOf="@+id/commentBox"
         app:srcCompat="@null" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="387dp"
-        android:layout_height="463dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562"
-        tools:listitem="@layout/container_comments"/>
-
-    <TextView
-        android:id="@+id/emptyView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No comments yet. Be the first one to comment!"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:visibility="gone"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>
