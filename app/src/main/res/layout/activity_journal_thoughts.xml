@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00008F"
-    tools:context=".journalThoughts">
+    tools:context=".JournalThoughts">
 
     <ImageView
         android:id="@+id/journalthoughtsTxt"
@@ -55,7 +55,7 @@
         android:paddingStart="10dp"
         android:paddingTop="3dp"
         android:paddingEnd="50dp"
-        android:text="ang aso ay nagbackflip sa bubong ako ay nagulat, napasabi na lang ng I miss you"
+        android:hint="Write a comment..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +75,7 @@
         app:srcCompat="@null" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="387dp"
         android:layout_height="463dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,4 +84,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.562"
         tools:listitem="@layout/container_comments"/>
+
+    <TextView
+        android:id="@+id/emptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No comments yet. Be the first one to comment!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

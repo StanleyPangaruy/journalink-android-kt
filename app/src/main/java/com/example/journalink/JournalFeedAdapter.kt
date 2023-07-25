@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -104,7 +105,7 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
 
     inner class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val likeButton: ImageView = itemView.findViewById(R.id.heartIcon)
-        val commentButton: ImageView = itemView.findViewById(R.id.commentIcon)
+        private val commentButton: ImageButton = itemView.findViewById(R.id.commentIcon)
         private val titleTextView: TextView = itemView.findViewById(R.id.journalTitle)
         private val descTextView: TextView = itemView.findViewById(R.id.shortDesc)
         private val dateTextView: TextView = itemView.findViewById(R.id.timeStamp)
@@ -149,6 +150,13 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
                         userLikedJournalsRef.child(journal.id).removeValue()
                     }
                 }
+            }
+
+            commentButton.setOnClickListener{
+                val intent = Intent(context, JournalThoughts::class.java)
+                intent.putExtra("journalId", journal.id)
+                context.startActivity(intent)
+
             }
 
         }

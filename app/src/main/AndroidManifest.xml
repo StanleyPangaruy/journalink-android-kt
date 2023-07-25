@@ -66,8 +66,8 @@
             android:name=".JournalContentViewer"
             android:exported="false" />
         <activity
-            android:name=".journalThoughts"
-            android:exported="false">
+            android:name=".JournalThoughts"
+            android:exported="false" />
         <activity
             android:name=".splashScreen"
             android:exported="true">

@@ -6,8 +6,10 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class JournalFeed : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -52,10 +54,13 @@ class JournalFeed : AppCompatActivity() {
                     val date = journalSnapshot.child("date").value.toString()
                     val content = journalSnapshot.child("content").value.toString()
                     val likes = journalSnapshot.child("likes").getValue(Int::class.java) ?: 0
-                    val comments = journalSnapshot.child("comments").getValue(Int::class.java) ?: 0
                     val likedByUser = journalSnapshot.child("subscribed").getValue(Boolean::class.java) ?: false
+                    val commentCount = journalSnapshot.child("comments").childrenCount.toInt()
 
-                    val journal = JournalFeedData(journalId, title, shortDesc, date, content, likes, comments, likedByUser)
+                    val journal = JournalFeedData(
+                        journalId, title, shortDesc, date, content,
+                        likes, commentCount, likedByUser // Include the comment count here
+                    )
                     journals.add(journal)
                 }
 
