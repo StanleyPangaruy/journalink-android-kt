@@ -29,13 +29,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007"
-        app:srcCompat="@drawable/commenticon" />
+        app:srcCompat="@drawable/commenticon1" />
 
     <ImageButton
         android:id="@+id/xbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/xbtn"
+        android:background="@drawable/xbtn1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
