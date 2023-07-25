@@ -16,7 +16,6 @@ class JournalThoughts : AppCompatActivity() {
 
     private var CommentsList: RecyclerView? = null
     private var CommentInputText: EditText? = null
-    private var current_user_id: String? = null
     private var PostsRef: DatabaseReference? = null
     private var mAuth: FirebaseAuth? = null
     private var Post_Key: String? = null
@@ -42,17 +41,11 @@ class JournalThoughts : AppCompatActivity() {
         // Get the current user ID from FirebaseAuth
         mAuth = FirebaseAuth.getInstance()
         val currentUser = mAuth!!.currentUser
-        if (currentUser != null) {
-            current_user_id = currentUser.uid
-        } else {
-            // Handle the case when there is no authenticated user
-            // You may choose to show a login screen or handle it according to your app's logic
-        }
+        val currentUserId = currentUser?.uid ?: "" // Get the current user's UID or an empty string for anonymous comments
 
         // Get the reference to the selected journal's comments node in Firebase
-        PostsRef =
-            FirebaseDatabase.getInstance("https://journalink-a083a-default-rtdb.firebaseio.com/")
-                .reference.child("shared_journals").child(Post_Key!!).child("comments")
+        PostsRef = FirebaseDatabase.getInstance("https://journalink-a083a-default-rtdb.firebaseio.com/")
+            .reference.child("shared_journals").child(Post_Key!!).child("comments")
 
         // Set a click listener for the "Save" button to post a new comment
         postCommentButton.setOnClickListener {
@@ -60,7 +53,7 @@ class JournalThoughts : AppCompatActivity() {
             if (commentText.isNotEmpty()) {
                 // Create a new comment using the CommentEntry class
                 val commentEntry = CommentEntry()
-                commentEntry.createComment(current_user_id!!, commentText)
+                commentEntry.createComment(Post_Key!!, commentText, currentUserId)
 
                 // Show a toast message if the comment is posted successfully
                 Toast.makeText(
@@ -88,3 +81,4 @@ class JournalThoughts : AppCompatActivity() {
         CommentsList!!.adapter = adapter
     }
 }
+

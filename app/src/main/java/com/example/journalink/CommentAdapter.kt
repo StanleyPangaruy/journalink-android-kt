@@ -23,7 +23,7 @@ class CommentAdapter(options: FirebaseRecyclerOptions<Comment>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Comment) {
-        holder.textViewComment.text = model.comment
+        holder.textViewComment.text = model.commentText
         holder.textViewDate.text = model.date
         holder.textViewTime.text = model.time
     }

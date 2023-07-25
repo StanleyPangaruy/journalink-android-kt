@@ -6,19 +6,11 @@ import java.util.Locale
 
 data class Comment(
     val id: String = "",
-    val comment: String = "",
+    val commentText: String = "", // Rename the field to avoid confusion
     val uid: String = "",
-    val date: String = "",
-    val time: String = ""
+    val date: String = getCurrentDate(),
+    val time: String = getCurrentTime()
 ) {
-    constructor(id: String, comment: String, uid: String) : this(
-        id,
-        comment,
-        uid,
-        getCurrentDate(),
-        getCurrentTime()
-    )
-
     companion object {
         private fun getCurrentDate(): String {
             val format = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
