@@ -1,13 +1,19 @@
 package com.example.journalink
 
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -99,8 +105,21 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
                     userLikedJournalsRef.child(journal.id).removeValue()
                 }
             }
-        }
 
+            // Send the like notification to the user who shared the journal
+            sendLikeNotificationToUser(journal.uid)
+        }
+    }
+
+    private fun sendLikeNotificationToUser(uid: String) {
+        // ... Your code to send the like notification ...
+        // You can use the `sendNotificationToUser` function from the previous response to send the notification.
+        // Make sure to replace "YOUR_SERVER_KEY" with your actual Firebase server key.
+        val serverKey = "AAAA8df_XrM:APA91bF9l4HesLw0Ym9niQEkALVJZTODe4_qGtVZ2FNYZ0jfpBM0dk2bzfRa0zAciU4VijPNooXnLvLiZJOjw4yvUlTP87Jz_IyvTPN3Lk8ZKSecPYvoAQli9_KIPB2diF3o4zzNw3YN"
+
+
+        // Example:
+        sendNotificationToUser(uid, "Your Journal received a Like", "Someone liked your journal.")
     }
 
     inner class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -134,32 +153,51 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
                 context.startActivity(intent)
 
             }
-            likeButton.setOnClickListener {
-                // Same as before
-
-                // Update the liked journals node for the current user in the Firebase Realtime Database
-                val uid = currentUser?.uid
-                if (uid != null) {
-                    val userLikedJournalsRef =
-                        FirebaseDatabase.getInstance().getReference("users").child(uid).child("likedJournals")
-                    if (journal.likedByUser) {
-                        // If the journal is liked, add it to the likedJournals node
-                        userLikedJournalsRef.child(journal.id).setValue(true)
-                    } else {
-                        // If the journal is unliked, remove it from the likedJournals node
-                        userLikedJournalsRef.child(journal.id).removeValue()
-                    }
-                }
-            }
-
             commentButton.setOnClickListener{
                 val intent = Intent(context, JournalThoughts::class.java)
                 intent.putExtra("journalId", journal.id)
                 context.startActivity(intent)
 
             }
-
         }
+    }
+
+    private fun sendNotificationToUser(userId: String, title: String, message: String) {
+        val databaseReference = FirebaseDatabase.getInstance().getReference("tokens").child(userId)
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("MissingPermission")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val token = snapshot.child("token").value.toString()
+
+                // Create a notification channel for Android Oreo and higher
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val channelId = "journalink_notification_channel"
+                    val channelName = "JournaLink Notifications"
+                    val importance = NotificationManager.IMPORTANCE_DEFAULT
+                    val notificationChannel = NotificationChannel(channelId, channelName, importance)
+                    val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                    notificationManager.createNotificationChannel(notificationChannel)
+                }
+
+                val notificationBuilder = NotificationCompat.Builder(context, "journalink_notification_channel")
+                    .setSmallIcon(R.mipmap.ic_launcher_foreground)
+                    .setContentTitle(title)
+                    .setContentText(message)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setAutoCancel(true)
+
+                // Create an ID for the notification
+                val notificationId = System.currentTimeMillis().toInt()
+
+                // Show the notification
+                val notificationManagerCompat = NotificationManagerCompat.from(context)
+                notificationManagerCompat.notify(notificationId, notificationBuilder.build())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle error, if necessary
+            }
+        })
     }
 
     private class JournalDiffCallback : DiffUtil.ItemCallback<JournalFeedData>() {
@@ -171,5 +209,4 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
             return oldItem == newItem
         }
     }
-
 }

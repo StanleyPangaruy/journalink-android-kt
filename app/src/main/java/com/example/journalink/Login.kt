@@ -12,6 +12,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class Login : AppCompatActivity() {
     private lateinit var binding: LoginPageBinding
@@ -55,6 +56,23 @@ class Login : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
+                    val token = FirebaseMessaging.getInstance().token.result
+                    if (token != null) {
+                        // Log the token to the console
+                        Log.d("FCM_TOKEN", "Token: $token")
+
+                        val userId = user?.uid
+                        if (userId != null) {
+                            val databaseReference = FirebaseDatabase.getInstance().getReference("tokens").child(userId)
+                            databaseReference.child("token").setValue(token)
+                                .addOnSuccessListener {
+                                    // Token saved successfully
+                                }
+                                .addOnFailureListener {
+                                    // Handle token save failure, if necessary
+                                }
+                        }
+                    }
                     updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.

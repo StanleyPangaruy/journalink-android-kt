@@ -1,6 +1,7 @@
 package com.example.journalink
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
@@ -11,6 +12,10 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
+import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 
 class JournalThoughts : AppCompatActivity() {
 
@@ -24,6 +29,8 @@ class JournalThoughts : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_journal_thoughts)
+        FirebaseMessaging.getInstance().isAutoInitEnabled = true
+        val sharedByUserId = intent.getStringExtra("userId") ?: ""
 
         closeComments = findViewById(R.id.xbutton)
         closeComments.setOnClickListener {
@@ -70,6 +77,7 @@ class JournalThoughts : AppCompatActivity() {
 
                 // Clear the comment input text
                 CommentInputText?.setText("")
+                sendNotificationToUser(sharedByUserId)
             } else {
                 // Show a toast message if the comment is empty
                 Toast.makeText(this@JournalThoughts, "Please write a comment", Toast.LENGTH_SHORT).show()
@@ -86,5 +94,63 @@ class JournalThoughts : AppCompatActivity() {
         adapter.startListening()
         CommentsList!!.adapter = adapter
     }
+
+    private fun sendNotificationToUser(userId: String) {
+        // Here, you would use Firebase Cloud Functions or your custom server to send the notification
+        // to the user with the provided `userId`.
+        // In this example, we'll show how to use the Firebase Cloud Messaging HTTP API directly to send the notification.
+
+        // Replace YOUR_SERVER_KEY with your actual server key from the Firebase Console (Settings > Cloud Messaging)
+        val serverKey = "AAAA8df_XrM:APA91bF9l4HesLw0Ym9niQEkALVJZTODe4_qGtVZ2FNYZ0jfpBM0dk2bzfRa0zAciU4VijPNooXnLvLiZJOjw4yvUlTP87Jz_IyvTPN3Lk8ZKSecPYvoAQli9_KIPB2diF3o4zzNw3YN"
+
+        // Create the notification message
+        val notificationMessage = mapOf(
+            "to" to "/topics/$userId",
+            "data" to mapOf(
+                // Customize the notification payload as needed
+                "title" to "New Comment on Your Shared Journal",
+                "body" to "Someone commented on your shared journal.",
+                "click_action" to "OPEN_COMMENTS_ACTIVITY", // Add the action you want to perform when the user taps the notification
+                // Add any additional data you want to send along with the notification
+            )
+        )
+
+        // Send the notification using Firebase Cloud Messaging HTTP API
+        val url = "https://fcm.googleapis.com/fcm/send"
+        val headers = mapOf(
+            "Authorization" to "key=$serverKey",
+            "Content-Type" to "application/json"
+        )
+
+        // You can use a networking library like Retrofit or OkHttp to make the HTTP POST request.
+        // For simplicity, we'll use a simple HTTPURLConnection here.
+        try {
+            val jsonString = JSONObject(notificationMessage).toString()
+            val connection = URL(url).openConnection() as HttpURLConnection
+            connection.doOutput = true
+            connection.requestMethod = "POST"
+            connection.setRequestProperty("Content-Type", "application/json")
+            for ((key, value) in headers) {
+                connection.setRequestProperty(key, value)
+            }
+            val outputStream = connection.outputStream
+            outputStream.write(jsonString.toByteArray())
+            outputStream.close()
+
+            val responseCode = connection.responseCode
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Notification sent successfully
+                Log.d("FCM", "Notification sent successfully.")
+            } else {
+                // Notification sending failed
+                Log.e("FCM", "Failed to send notification. Response code: $responseCode")
+            }
+
+            connection.disconnect()
+        } catch (e: Exception) {
+            Log.e("FCM", "Exception while sending notification: ${e.message}")
+        }
+    }
+
 }
 
