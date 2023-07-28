@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SignUp">
 
-    <!-- Background circles on the left side -->
-
-    <!-- Background circles on the right side -->
-
     <ImageView
         android:id="@+id/leftCircle1"
         android:layout_width="45dp"
@@ -23,20 +19,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.004" />
 
+    <!-- returning arrow -->
+
     <ImageView
         android:id="@+id/leftCircle2"
         android:layout_width="155dp"
         android:layout_height="190dp"
-        android:layout_marginTop="496dp"
-        android:layout_marginEnd="195dp"
         android:background="@drawable/circle_lower_left2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,31:30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- returning arrow -->
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/rightCircle1"
@@ -50,19 +46,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.213" />
-
-    <ImageView
-        android:id="@+id/rightCircle2"
-        android:layout_width="60dp"
-        android:layout_height="190dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="188dp"
-        android:background="@drawable/circle_lower_right2"
-        app:layout_constraintDimensionRatio="H,4:19"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rightCircle1" />
 
     <ImageButton
         android:id="@+id/arrow"
@@ -239,5 +222,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </com.google.android.material.textfield.TextInputLayout>
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/rightCircle2"
+        android:layout_width="60dp"
+        android:layout_height="190dp"
+        android:background="@drawable/circle_lower_right2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
