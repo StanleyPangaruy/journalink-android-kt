@@ -74,8 +74,69 @@ class EditProfile : AppCompatActivity() {
         val phoneNumber = binding.phoneNumbertxtbox.text.toString().trim()
         val nickname = binding.nicknametxtbox.text.toString().trim()
 
-        // ... (rest of your existing saveProfile() function)
+        // Get the current user from Firebase Authentication
+        val currentUser = FirebaseAuth.getInstance().currentUser
 
+        if (currentUser != null && email != currentUser.email) {
+            // Update the email address in Firebase Authentication
+            currentUser.updateEmail(email)
+                .addOnCompleteListener { emailUpdateTask ->
+                    if (emailUpdateTask.isSuccessful) {
+                        // Email address updated successfully
+                        // Now update the profile data in the Firebase Realtime Database
+                        val profile = Profile(fullName, email, phoneNumber, nickname)
+                        profileRef.setValue(profile)
+                            .addOnCompleteListener { profileUpdateTask ->
+                                if (profileUpdateTask.isSuccessful) {
+                                    // Profile saved successfully
+                                    Toast.makeText(
+                                        this,
+                                        "Profile Saved Successfully.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    navigateToProfilePage()
+                                } else {
+                                    // Handle error while updating profile
+                                    Toast.makeText(
+                                        this,
+                                        "Failed to edit profile.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                    } else {
+                        // Handle error while updating email address
+                        Toast.makeText(
+                            this,
+                            "Failed to update email address.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        } else {
+            // No changes to email address or user not authenticated
+            // Proceed with saving the profile data only
+            val profile = Profile(fullName, email, phoneNumber, nickname)
+            profileRef.setValue(profile)
+                .addOnCompleteListener { profileUpdateTask ->
+                    if (profileUpdateTask.isSuccessful) {
+                        // Profile saved successfully
+                        Toast.makeText(
+                            this,
+                            "Profile Saved Successfully.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        navigateToProfilePage()
+                    } else {
+                        // Handle error while updating profile
+                        Toast.makeText(
+                            this,
+                            "Failed to edit profile.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
         hasUnsavedChanges = false // Reset the unsaved changes flag after successfully saving
     }
 
