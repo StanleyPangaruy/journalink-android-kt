@@ -2,6 +2,8 @@ package com.example.journalink
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -41,8 +43,29 @@ class EditProfile : AppCompatActivity() {
             showUnsavedConfirmationDialog()
         }
 
+        // Add TextWatcher to EditText fields
+        binding.fullNametxtbox.addTextChangedListener(textWatcher)
+        binding.emailTxtBox.addTextChangedListener(textWatcher)
+        binding.phoneNumbertxtbox.addTextChangedListener(textWatcher)
+        binding.nicknametxtbox.addTextChangedListener(textWatcher)
+
         // Populate the fields with previously saved credentials
         populateFields()
+    }
+
+    private val textWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            // Not used
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            // When any text changes in the EditText fields, set hasUnsavedChanges to true
+            hasUnsavedChanges = true
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+            // Not used
+        }
     }
 
     private fun saveProfile() {
@@ -51,72 +74,10 @@ class EditProfile : AppCompatActivity() {
         val phoneNumber = binding.phoneNumbertxtbox.text.toString().trim()
         val nickname = binding.nicknametxtbox.text.toString().trim()
 
-        // Get the current user from Firebase Authentication
-        val currentUser = FirebaseAuth.getInstance().currentUser
+        // ... (rest of your existing saveProfile() function)
 
-        if (currentUser != null && email != currentUser.email) {
-            // Update the email address in Firebase Authentication
-            currentUser.updateEmail(email)
-                .addOnCompleteListener { emailUpdateTask ->
-                    if (emailUpdateTask.isSuccessful) {
-                        // Email address updated successfully
-                        // Now update the profile data in the Firebase Realtime Database
-                        val profile = Profile(fullName, email, phoneNumber, nickname)
-                        profileRef.setValue(profile)
-                            .addOnCompleteListener { profileUpdateTask ->
-                                if (profileUpdateTask.isSuccessful) {
-                                    // Profile saved successfully
-                                    Toast.makeText(
-                                        this,
-                                        "Profile Saved Successfully.",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    navigateToProfilePage()
-                                } else {
-                                    // Handle error while updating profile
-                                    Toast.makeText(
-                                        this,
-                                        "Failed to edit profile.",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-                    } else {
-                        // Handle error while updating email address
-                        Toast.makeText(
-                            this,
-                            "Failed to update email address.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-        } else {
-            // No changes to email address or user not authenticated
-            // Proceed with saving the profile data only
-            val profile = Profile(fullName, email, phoneNumber, nickname)
-            profileRef.setValue(profile)
-                .addOnCompleteListener { profileUpdateTask ->
-                    if (profileUpdateTask.isSuccessful) {
-                        // Profile saved successfully
-                        Toast.makeText(
-                            this,
-                            "Profile Saved Successfully.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        navigateToProfilePage()
-                    } else {
-                        // Handle error while updating profile
-                        Toast.makeText(
-                            this,
-                            "Failed to edit profile.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-        }
+        hasUnsavedChanges = false // Reset the unsaved changes flag after successfully saving
     }
-
-
 
     private fun showUnsavedConfirmationDialog() {
         if (hasUnsavedChanges) {
@@ -129,7 +90,6 @@ class EditProfile : AppCompatActivity() {
                 .setNegativeButton("Discard") { _, _ ->
                     navigateToProfilePage()
                 }
-                .setNeutralButton("Cancel", null)
                 .setCancelable(false)
                 .create()
 
@@ -149,7 +109,6 @@ class EditProfile : AppCompatActivity() {
             .setNegativeButton("Go Back") { _, _ ->
                 // No action needed here, as pressing "Go Back" will automatically close the dialog
             }
-            .setNeutralButton("Cancel", null)
             .setCancelable(false)
             .create()
 

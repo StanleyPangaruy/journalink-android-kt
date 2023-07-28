@@ -153,27 +153,41 @@ class ViewJournalViewer : AppCompatActivity() {
 
         databaseReference.setValue(data)
             .addOnSuccessListener {
-                // Data shared successfully
+                Toast.makeText(this, "Journal Shared Successfully.", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, JournalFeed::class.java)
+                finish()
+                startActivity(intent)
             }
             .addOnFailureListener {
-                // Failed to share data, handle the error
+                Toast.makeText(this, "Journal Share Failed. Please Try Again.", Toast.LENGTH_LONG).show()
             }
     }
 
-    private fun deleteJournal(id:String){
+    private fun deleteJournal(id: String) {
         val uid = intent.getStringExtra("uid").toString()
-        val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(uid).child(id)
-        val mTask = dbRef.removeValue()
 
-        mTask.addOnSuccessListener {
-            Toast.makeText(this, "Journal Entry Removed.", Toast.LENGTH_LONG).show()
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Delete Journal Entry")
+            .setMessage("Are you sure you want to delete this journal entry?")
+            .setPositiveButton("Delete") { _, _ ->
+                val dbRef = FirebaseDatabase.getInstance().getReference("journals").child(uid).child(id)
+                val mTask = dbRef.removeValue()
 
-            val intent = Intent(this, ViewJournal::class.java)
-            finish()
-            startActivity(intent)
-        }.addOnFailureListener{ error ->
-            Toast.makeText(this, "Journal Entry Removal Error.", Toast.LENGTH_LONG).show()
-        }
+                mTask.addOnSuccessListener {
+                    Toast.makeText(this, "Journal Entry Removed.", Toast.LENGTH_LONG).show()
+
+                    val intent = Intent(this, ViewJournal::class.java)
+                    finish()
+                    startActivity(intent)
+                }.addOnFailureListener { _ ->
+                    Toast.makeText(this, "Journal Entry Removal Error.", Toast.LENGTH_LONG).show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .setCancelable(false)
+            .create()
+
+        alertDialog.show()
     }
 
     // Function to get the current date (replace this with your actual date logic)

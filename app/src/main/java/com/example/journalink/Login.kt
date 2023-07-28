@@ -27,7 +27,7 @@ class Login : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().reference
 
         binding.signUpButton.setOnClickListener {
-            val intent = Intent(this, SignUp::class.java)
+            val intent = Intent(this, TermsandConditions::class.java)
             startActivity(intent)
         }
 

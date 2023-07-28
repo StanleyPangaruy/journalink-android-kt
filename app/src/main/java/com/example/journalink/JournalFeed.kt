@@ -10,6 +10,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class JournalFeed : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -31,8 +33,11 @@ class JournalFeed : AppCompatActivity() {
 
         // Fetch journals from all users
         getAllSharedJournalsFromFirebase { journals ->
-            journalAdapter.submitList(journals)
+            // Sort journals by date in ascending order before reversing the list
+            val sortedJournals = journals.sortedBy { it.date.toTimestamp() }.reversed()
+            journalAdapter.submitList(sortedJournals)
         }
+
         val backButton = findViewById<ImageView>(R.id.backBtn)
         backButton.setOnClickListener{
             finish()
@@ -71,5 +76,11 @@ class JournalFeed : AppCompatActivity() {
                 // Handle error, if necessary
             }
         })
+    }
+    // Extension function to convert date string to timestamp
+    private fun String.toTimestamp(): Long {
+        val format = SimpleDateFormat("MMMM dd, yyyy", Locale.US)
+        val date = format.parse(this)
+        return date?.time ?: 0L
     }
 }
