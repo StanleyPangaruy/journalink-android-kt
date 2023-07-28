@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="220dp"
     android:backgroundTint="#00008f">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="199dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/journalBackground"
-            android:layout_width="376dp"
-            android:layout_height="196dp"
+            android:layout_width="340dp"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/bgforjournals" />
@@ -27,10 +29,10 @@
             android:background="@drawable/hearticon"
             app:layout_constraintBottom_toBottomOf="@+id/journalBackground"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.834"
+            app:layout_constraintVertical_bias="0.97"
             app:srcCompat="@null" />
 
         <ImageButton
@@ -40,10 +42,10 @@
             android:background="@drawable/commenticon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintHorizontal_bias="0.28"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.824"
+            app:layout_constraintVertical_bias="0.92"
             app:srcCompat="@null" />
 
         <TextView
@@ -56,10 +58,10 @@
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintHorizontal_bias="0.88"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825" />
+            app:layout_constraintVertical_bias="0.907" />
 
         <TextView
             android:id="@+id/heartCounter"
@@ -71,10 +73,10 @@
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintHorizontal_bias="0.19"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.825" />
+            app:layout_constraintVertical_bias="0.90999997" />
 
         <TextView
             android:id="@+id/commentCounter"
@@ -86,10 +88,10 @@
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.29"
+            app:layout_constraintHorizontal_bias="0.36"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.822" />
+            app:layout_constraintVertical_bias="0.90999997" />
 
         <TextView
             android:id="@+id/journalTitle"
@@ -102,21 +104,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.279" />
+            app:layout_constraintVertical_bias="0.107" />
 
         <TextView
             android:id="@+id/shortDesc"
             style="@style/ContentTextStyle"
             android:layout_width="302dp"
-            android:layout_height="30dp"
+            android:layout_height="110dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.572" />
+            app:layout_constraintVertical_bias="0.64" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
