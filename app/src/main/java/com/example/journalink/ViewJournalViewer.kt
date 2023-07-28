@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -141,26 +142,34 @@ class ViewJournalViewer : AppCompatActivity() {
         val content = journContent.text.toString()
         val date = getCurrentDate() // Replace this with the actual date value you want to use
 
-        // Store the shared data in Firebase Realtime Database under the specific journal ID
-        val databaseReference =
-            FirebaseDatabase.getInstance().getReference("shared_journals").push()
-        val data = mapOf(
-            "title" to title,
-            "shortDescription" to shortDescription,
-            "content" to content,
-            "date" to date
-        )
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val uid = currentUser?.uid
 
-        databaseReference.setValue(data)
-            .addOnSuccessListener {
-                Toast.makeText(this, "Journal Shared Successfully.", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, JournalFeed::class.java)
-                finish()
-                startActivity(intent)
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Journal Share Failed. Please Try Again.", Toast.LENGTH_LONG).show()
-            }
+        if (uid != null) {
+            // Store the shared data in Firebase Realtime Database under the specific journal ID
+            val databaseReference =
+                FirebaseDatabase.getInstance().getReference("shared_journals").push()
+            val data = mapOf(
+                "title" to title,
+                "shortDescription" to shortDescription,
+                "content" to content,
+                "date" to date,
+                "uid" to uid // Add the user's UID to the shared data
+            )
+
+            databaseReference.setValue(data)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Journal Shared Successfully.", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, JournalFeed::class.java)
+                    finish()
+                    startActivity(intent)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Journal Share Failed. Please Try Again.", Toast.LENGTH_LONG).show()
+                }
+        } else {
+            Toast.makeText(this, "User not authenticated. Unable to share journal.", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun deleteJournal(id: String) {

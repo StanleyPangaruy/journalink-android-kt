@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ViewJournal : AppCompatActivity(), Parcelable {
 
@@ -41,7 +43,7 @@ class ViewJournal : AppCompatActivity(), Parcelable {
 
         val returnbtn = findViewById<ImageButton>(R.id.returnButton)
         returnbtn.setOnClickListener {
-            val intent = Intent (this, HomePage:: class.java)
+            val intent = Intent(this, HomePage::class.java)
             startActivity(intent)
             finish()
         }
@@ -52,10 +54,9 @@ class ViewJournal : AppCompatActivity(), Parcelable {
 
         auth = Firebase.auth
 
-        journal = ArrayList<Journal>()
+        journal = ArrayList()
 
         getJournalData()
-
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -83,7 +84,7 @@ class ViewJournal : AppCompatActivity(), Parcelable {
         val uid = currentUser?.uid
         if (uid != null) {
             journalRef = FirebaseDatabase.getInstance().getReference("journals").child(uid)
-            
+
             journalRef.orderByChild("time").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     journal.clear()
@@ -92,13 +93,13 @@ class ViewJournal : AppCompatActivity(), Parcelable {
                             val journalData = journalSnap.getValue(Journal::class.java)
                             journal.add(journalData!!)
                         }
-                        // Reverse the list to display the newest entry at the top
-                        journal.reverse()
+                        // Sort the list by time in descending order to display the newest entry at the top
+                        journal.sortByDescending { it.date.toTimestamp() }
 
                         val jRVAdapter = RVAdapter(journal)
                         recyclerView.adapter = jRVAdapter
 
-                        jRVAdapter.setOnItemClickListener(object : RVAdapter.onItemClickListener{
+                        jRVAdapter.setOnItemClickListener(object : RVAdapter.onItemClickListener {
                             override fun onItemClick(position: Int) {
                                 val intent = Intent(this@ViewJournal, ViewJournalViewer::class.java)
 
@@ -112,7 +113,6 @@ class ViewJournal : AppCompatActivity(), Parcelable {
                                 intent.putExtra("id", journal[position].id)
                                 startActivity(intent)
                             }
-
                         })
 
                         recyclerView.visibility = View.VISIBLE
@@ -120,13 +120,15 @@ class ViewJournal : AppCompatActivity(), Parcelable {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    // Handle the error, if needed
                 }
             })
         }
     }
-    override fun onBackPressed() {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
+
+    private fun String.toTimestamp(): Long {
+        val format = SimpleDateFormat("MMMM dd, yyyy", Locale.US)
+        val date = format.parse(this)
+        return date?.time ?: 0L
     }
 }
