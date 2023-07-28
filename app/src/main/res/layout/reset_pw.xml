@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,126 +13,132 @@
         android:layout_height="230dp"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/circle_upper_left2" />
-
-    <View
-        android:id="@+id/leftCircle2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/circle_lower_left"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="685dp" />
+        android:background="@drawable/circle_upper_left2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Background circles on the right side -->
+
     <View
         android:id="@+id/rightCircle1"
         android:layout_width="190dp"
         android:layout_height="190dp"
+        android:layout_marginStart="320dp"
         android:background="@drawable/circle_bg"
-        android:layout_marginStart="290dp"
-        android:layout_marginTop="230dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.375" />
 
     <View
         android:id="@+id/rightCircle2"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginStart="270dp"
-        android:layout_marginTop="630dp"
-        android:background="@drawable/circle_bg" />
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="524dp"
+        android:background="@drawable/circle_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/resetPWCode"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095"
+        app:srcCompat="@drawable/email_sent_txt" />
 
-        <ImageView
-            android:id="@+id/resetPWCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.095"
-            app:srcCompat="@drawable/email_sent_txt" />
+    <TextView
+        android:id="@+id/resetPWDescripText"
+        style="@style/CustomEditTextStyle"
+        android:layout_width="292dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:text="Please check your Inbox / Spam and click on the received link to reset your password."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.267" />
 
-        <TextView
-            android:id="@+id/resetPWDescripText"
-            style="@style/CustomEditTextStyle"
-            android:layout_width="292dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:text="Please check your Inbox / Spam and click on the received link to reset your password."
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.267" />
+    <ImageView
+        android:id="@+id/emailIconSent"
+        android:layout_width="230dp"
+        android:layout_height="235dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/email_sent_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528" />
 
-        <ImageView
-            android:id="@+id/emailIconSent"
-            android:layout_width="230dp"
-            android:layout_height="235dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/email_sent_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.528" />
+    <ImageButton
+        android:id="@+id/loginButton"
+        style="@style/LoginButton"
+        android:layout_width="330dp"
+        android:layout_height="65dp"
+        android:src="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.788" />
 
-        <ImageButton
-            android:id="@+id/loginButton"
-            style="@style/LoginButton"
-            android:layout_width="330dp"
-            android:layout_height="65dp"
-            android:src="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.788" />
+    <TextView
+        android:id="@+id/didntReceiveTheCodeText"
+        style="@style/CustomEditTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="D i d n ' t  r e c e i v e  t h e  c o d e ?"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.873" />
 
-        <TextView
-            android:id="@+id/didntReceiveTheCodeText"
-            style="@style/CustomEditTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="D i d n ' t  r e c e i v e  t h e  c o d e ?"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.873" />
+    <TextView
+        android:id="@+id/resendText"
+        style="@style/CustomEditTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:shadowColor="@color/black"
+        android:shadowDx="7"
+        android:shadowDy="10"
+        android:shadowRadius="35"
+        android:text="R e s e n d"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
 
-        <TextView
-            android:id="@+id/resendText"
-            style="@style/CustomEditTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:shadowColor="@color/black"
-            android:shadowDx="7"
-            android:shadowDy="10"
-            android:shadowRadius="35"
-            android:text="R e s e n d"
-            android:textColor="@color/blue"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.92" />
+    <ImageView
+        android:id="@+id/leftCircle2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/circle_lower_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

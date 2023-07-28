@@ -7,56 +7,63 @@
     tools:context=".SignUp">
 
     <!-- Background circles on the left side -->
+
+    <!-- Background circles on the right side -->
+
     <ImageView
         android:id="@+id/leftCircle1"
         android:layout_width="45dp"
         android:layout_height="190dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="0dp"
         android:background="@drawable/circle_upper_left2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,19:95"
-        app:layout_constraintEnd_toStartOf="@id/leftCircle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004" />
 
     <ImageView
         android:id="@+id/leftCircle2"
         android:layout_width="155dp"
         android:layout_height="190dp"
-        android:layout_marginTop="395dp"
+        android:layout_marginTop="496dp"
         android:layout_marginEnd="195dp"
         android:background="@drawable/circle_lower_left2"
         app:layout_constraintDimensionRatio="H,31:30"
-        app:layout_constraintEnd_toStartOf="@id/rightCircle1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/leftCircle1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Background circles on the right side -->
+    <!-- returning arrow -->
+
     <ImageView
         android:id="@+id/rightCircle1"
         android:layout_width="60dp"
         android:layout_height="190dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="0dp"
         android:background="@drawable/circle_upper_right2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="H,4:19"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/leftCircle2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.213" />
 
     <ImageView
         android:id="@+id/rightCircle2"
         android:layout_width="60dp"
         android:layout_height="190dp"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="188dp"
         android:background="@drawable/circle_lower_right2"
         app:layout_constraintDimensionRatio="H,4:19"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/leftCircle2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rightCircle1" />
 
-    <!-- returning arrow -->
     <ImageButton
         android:id="@+id/arrow"
         android:layout_width="26dp"
