@@ -23,6 +23,24 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/white" />
 
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".NotificationActivity"
+            android:label="Notification Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="OPEN_COMMENTS_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".ForgotPassword"
             android:exported="false"
