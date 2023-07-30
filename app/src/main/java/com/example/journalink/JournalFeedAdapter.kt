@@ -115,9 +115,6 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
         // ... Your code to send the like notification ...
         // You can use the `sendNotificationToUser` function from the previous response to send the notification.
         // Make sure to replace "YOUR_SERVER_KEY" with your actual Firebase server key.
-        val serverKey = "AAAA8df_XrM:APA91bF9l4HesLw0Ym9niQEkALVJZTODe4_qGtVZ2FNYZ0jfpBM0dk2bzfRa0zAciU4VijPNooXnLvLiZJOjw4yvUlTP87Jz_IyvTPN3Lk8ZKSecPYvoAQli9_KIPB2diF3o4zzNw3YN"
-
-
         // Example:
         sendNotificationToUser(uid, "Your Journal received a Like", "Someone liked your journal.")
     }
@@ -163,6 +160,10 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
     }
 
     private fun sendNotificationToUser(userId: String, title: String, message: String) {
+        // Replace "YOUR_SERVER_KEY" with your actual Firebase server key from the Firebase Console
+        val serverKey = "AAAA8df_XrM:APA91bF9l4HesLw0Ym9niQEkALVJZTODe4_qGtVZ2FNYZ0jfpBM0dk2bzfRa0zAciU4VijPNooXnLvLiZJOjw4yvUlTP87Jz_IyvTPN3Lk8ZKSecPYvoAQli9_KIPB2diF3o4zzNw3YN"
+
+        // Retrieve the FCM token of the user from the "tokens" node in Firebase Realtime Database
         val databaseReference = FirebaseDatabase.getInstance().getReference("tokens").child(userId)
         databaseReference.addValueEventListener(object : ValueEventListener {
             @SuppressLint("MissingPermission")
@@ -190,8 +191,13 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
                 val notificationId = System.currentTimeMillis().toInt()
 
                 // Show the notification
-                val notificationManagerCompat = NotificationManagerCompat.from(context)
-                notificationManagerCompat.notify(notificationId, notificationBuilder.build())
+                try {
+                    val notificationManagerCompat = NotificationManagerCompat.from(context)
+                    notificationManagerCompat.notify(notificationId, notificationBuilder.build())
+                } catch (e: SecurityException) {
+                    // Handle the SecurityException here, e.g., show a toast or log the error.
+                    // This can happen if the app lacks the required permission to show notifications.
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

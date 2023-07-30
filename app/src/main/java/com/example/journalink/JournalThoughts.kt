@@ -1,5 +1,7 @@
 package com.example.journalink
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -29,7 +31,7 @@ class JournalThoughts : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_journal_thoughts)
         FirebaseMessaging.getInstance().isAutoInitEnabled = true
-        val sharedByUserId = intent.getStringExtra("userId") ?: ""
+        val sharedByUserId = intent.getStringExtra("uid") ?: ""
 
         val closeComments = findViewById<ImageButton>(R.id.xbutton)
         closeComments.setOnClickListener {
@@ -83,7 +85,7 @@ class JournalThoughts : AppCompatActivity() {
         CommentsList!!.adapter = adapter
     }
 
-    private fun sendNotificationToUser(userId: String) {
+    private fun sendNotificationToUser(sharedByUserId: String) {
         // Here, you would use Firebase Cloud Functions or your custom server to send the notification
         // to the user with the provided `userId`.
         // In this example, we'll show how to use the Firebase Cloud Messaging HTTP API directly to send the notification.
@@ -93,7 +95,7 @@ class JournalThoughts : AppCompatActivity() {
 
         // Create the notification message
         val notificationMessage = mapOf(
-            "to" to "/topics/$userId",
+            "to" to "/topics/$sharedByUserId",
             "data" to mapOf(
                 // Customize the notification payload as needed
                 "title" to "New Comment on Your Shared Journal",
@@ -115,6 +117,16 @@ class JournalThoughts : AppCompatActivity() {
         try {
             val jsonString = JSONObject(notificationMessage).toString()
             val connection = URL(url).openConnection() as HttpURLConnection
+
+            // Explicitly check for the required permission before making the connection
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+                    // Handle the case where the required permission is not granted
+                    Log.e("FCM", "Required permission not granted: INTERNET")
+                    return
+                }
+            }
+
             connection.doOutput = true
             connection.requestMethod = "POST"
             connection.setRequestProperty("Content-Type", "application/json")
