@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,11 +18,15 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.journalink.utils.extensions.getCurrentTopic
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeedData, JournalFeedAdapter.JournalViewHolder>(JournalDiffCallback()) {
     private val likedJournalsSet = mutableSetOf<String>()
@@ -112,12 +117,34 @@ class JournalFeedAdapter(private val context: Context) : ListAdapter<JournalFeed
     }
 
     private fun sendLikeNotificationToUser(uid: String) {
-        // ... Your code to send the like notification ...
-        // You can use the `sendNotificationToUser` function from the previous response to send the notification.
-        // Make sure to replace "YOUR_SERVER_KEY" with your actual Firebase server key.
-        // Example:
-        sendNotificationToUser(uid, "Your Journal received a Like", "Someone liked your journal.")
+        if (uid.isBlank()) {
+            Log.e("FCM", "Invalid UID for sending notification")
+            return
+        }
+
+        val token = context.getCurrentTopic()
+        val notificationData = NotificationData(
+            title = "Your Journal received a Like",
+            message = "Someone liked your journal."
+        )
+
+        val notification = PushNotification(
+            data = notificationData,
+            to = "/topics/$uid"
+        )
+
+        // Call the repository to send the notification using Retrofit
+        val repository = Repository()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                repository.sendNotification(notification)
+            } catch (e: Exception) {
+                Log.e("FCM", "Exception while sending notification: ${e.message}")
+            }
+        }
     }
+
+
 
     inner class JournalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val likeButton: ImageView = itemView.findViewById(R.id.heartIcon)

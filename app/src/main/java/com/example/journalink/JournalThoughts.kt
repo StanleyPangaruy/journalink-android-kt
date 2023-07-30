@@ -1,7 +1,5 @@
 package com.example.journalink
 
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -15,9 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessaging
-import org.json.JSONObject
-import java.net.HttpURLConnection
-import java.net.URL
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class JournalThoughts : AppCompatActivity() {
 
@@ -53,8 +51,9 @@ class JournalThoughts : AppCompatActivity() {
         val currentUser = mAuth!!.currentUser
         val currentUserId = currentUser?.uid ?: ""
 
-        PostsRef = FirebaseDatabase.getInstance("https://journalink-a083a-default-rtdb.firebaseio.com/")
-            .reference.child("shared_journals").child(Post_Key!!).child("comments")
+        PostsRef =
+            FirebaseDatabase.getInstance("https://journalink-a083a-default-rtdb.firebaseio.com/")
+                .reference.child("shared_journals").child(Post_Key!!).child("comments")
 
         postCommentButton.setOnClickListener {
             val commentText = CommentInputText!!.text.toString()
@@ -71,7 +70,8 @@ class JournalThoughts : AppCompatActivity() {
                 CommentInputText?.setText("")
                 sendNotificationToUser(sharedByUserId)
             } else {
-                Toast.makeText(this@JournalThoughts, "Please write a comment", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@JournalThoughts, "Please write a comment", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -86,70 +86,26 @@ class JournalThoughts : AppCompatActivity() {
     }
 
     private fun sendNotificationToUser(sharedByUserId: String) {
-        // Here, you would use Firebase Cloud Functions or your custom server to send the notification
-        // to the user with the provided `userId`.
-        // In this example, we'll show how to use the Firebase Cloud Messaging HTTP API directly to send the notification.
-
-        // Replace YOUR_SERVER_KEY with your actual server key from the Firebase Console (Settings > Cloud Messaging)
-        val serverKey = "AAAA8df_XrM:APA91bF9l4HesLw0Ym9niQEkALVJZTODe4_qGtVZ2FNYZ0jfpBM0dk2bzfRa0zAciU4VijPNooXnLvLiZJOjw4yvUlTP87Jz_IyvTPN3Lk8ZKSecPYvoAQli9_KIPB2diF3o4zzNw3YN"
-
-        // Create the notification message
-        val notificationMessage = mapOf(
-            "to" to "/topics/$sharedByUserId",
-            "data" to mapOf(
-                // Customize the notification payload as needed
-                "title" to "New Comment on Your Shared Journal",
-                "body" to "Someone commented on your shared journal.",
-                "click_action" to "OPEN_COMMENTS_ACTIVITY", // Add the action you want to perform when the user taps the notification
-                // Add any additional data you want to send along with the notification
-            )
+        val notificationData = NotificationData(
+            title = "New Comment on Your Shared Journal",
+            message = "Someone commented on your shared journal."
         )
 
-        // Send the notification using Firebase Cloud Messaging HTTP API
-        val url = "https://fcm.googleapis.com/fcm/send"
-        val headers = mapOf(
-            "Authorization" to "key=$serverKey",
-            "Content-Type" to "application/json"
+        val notification = PushNotification(
+            data = notificationData,
+            to = "/topics/$sharedByUserId"
         )
 
-        // You can use a networking library like Retrofit or OkHttp to make the HTTP POST request.
-        // For simplicity, we'll use a simple HTTPURLConnection here.
-        try {
-            val jsonString = JSONObject(notificationMessage).toString()
-            val connection = URL(url).openConnection() as HttpURLConnection
-
-            // Explicitly check for the required permission before making the connection
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(android.Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-                    // Handle the case where the required permission is not granted
-                    Log.e("FCM", "Required permission not granted: INTERNET")
-                    return
-                }
+        // Call the repository to send the notification using Retrofit
+        val repository = Repository()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                repository.sendNotification(notification)
+            } catch (e: Exception) {
+                Log.e("FCM", "Exception while sending notification: ${e.message}")
             }
-
-            connection.doOutput = true
-            connection.requestMethod = "POST"
-            connection.setRequestProperty("Content-Type", "application/json")
-            for ((key, value) in headers) {
-                connection.setRequestProperty(key, value)
-            }
-            val outputStream = connection.outputStream
-            outputStream.write(jsonString.toByteArray())
-            outputStream.close()
-
-            val responseCode = connection.responseCode
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                // Notification sent successfully
-                Log.d("FCM", "Notification sent successfully.")
-            } else {
-                // Notification sending failed
-                Log.e("FCM", "Failed to send notification. Response code: $responseCode")
-            }
-
-            connection.disconnect()
-        } catch (e: Exception) {
-            Log.e("FCM", "Exception while sending notification: ${e.message}")
         }
     }
 }
+
 
